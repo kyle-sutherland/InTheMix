@@ -22,11 +22,15 @@ main {
   align-items: center;
 }
 
+h2 {
+  text-align: center;
+  padding: 3rem;
+}
+
 hr {
   width: 100%;
 }
 
-// .about {
-//   max-width: 72rem;
-//   align-items: center;
-// }
+.about {
+  text-align: center;
+}

@@ -24,7 +24,7 @@ export default function Carousel({ images }) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-full">
       <AiOutlineLeft
         onClick={handlePrevSlide}
         className="absolute left-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-gray-400 z-20"
@@ -38,6 +38,8 @@ export default function Carousel({ images }) {
           {images.map((image, index) => {
             if (index === currentSlide) {
               return (
+              <>
+              <div className="flex flex-row">
                 <Image
                   key={image.id}
                   src={image.src}
@@ -46,6 +48,13 @@ export default function Carousel({ images }) {
                   objectFit="contain"
                   className="animate-fadeIn"
                 />
+                <div className="text-center items-center flex mx-12">
+                  <div>
+                  {image.desc}
+                  </div>
+                </div>
+                </div>
+              </>
               );
             }
           })}

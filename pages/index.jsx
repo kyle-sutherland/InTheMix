@@ -14,13 +14,15 @@ export default function Home() {
       src: "/autumn-sour.jpg",
       alt: "",
       height: 500,
-      width: 500
+      width: 500,
+      desc: "The Autumn Sour. A thoughtfully crafted sour made with apple cider to kick off the harvest season. Ask about our curated cocktail menus.",
     },
     {
       src: "/drink1.jpg",
       alt: "",
       height: 500,
-      width: 500
+      width: 500,
+      desc: "The Red Rita, our fall inspired margarita. Made with cranberry juice, and a spiced simple syrup, gives this traditional summer drink a Canadian winter twist!"
     }
   ]
   return (
@@ -40,7 +42,7 @@ export default function Home() {
           </div>
         </div>
         <div className="align-items-center container max-w-4xl">
-            <h2 className="text-center p-3">ABOUT US</h2>
+            <h2>ABOUT US</h2>
           <div className="container">
             <div className="container grid md:grid-cols-2">
                 <div className="container order-first basis-1/2 p-3">
@@ -92,8 +94,10 @@ export default function Home() {
               </div>
             </div>
           </div>
+<h2>SIGNATURE COCKTAILS</h2>
           <div className="flex flex-row">
             {/*Cocktails*/}
+            
             <Carousel images={images}/>
           </div>
           <div className="flex flex-row">
