@@ -18,11 +18,15 @@ main {
   padding: 2rem 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 0 auto;
-  max-width: 60ch;
+  align-items: center;
 }
 
 hr {
   width: 100%;
 }
+
+// .about {
+//   max-width: 72rem;
+//   align-items: center;
+// }
