@@ -4,12 +4,12 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite-react/**/*.js",
   ],
   theme: {
     extend: {
       colors: {
         charcoal: "#3E424D",
-        slate: "#6B7288",
         "cool-gray": "#98A3C4",
         "maniac-mansion": {
           light: "#036085",
@@ -34,6 +34,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms"),
+  require("flowbite/plugin")],
 };
 

@@ -6,20 +6,12 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  //font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  //  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 * {
   box-sizing: border-box;
-}
-
-main {
-  padding: 2rem 20px;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  align-items: center;
 }
 
 h2 {
@@ -33,4 +25,72 @@ hr {
 
 .about {
   text-align: center;
+}
+
+.about-image {
+  justify-items: center;
+  margin: auto;
+}
+
+.landingContent {
+  z-index: 20;
+}
+
+.landingImage {
+  z-index: -10;
+  object-fit: cover;
+  overflow: hidden;
+  @media (min-width: 640px) {
+    width: 100vw;
+    height: max-content;
+  }
+  @media (min-width: 768px) {
+    width: 100vw;
+    height: 24rem;
+  }
+  @media (min-width: 1024px) {
+    width: 100vw;
+    height: 100vh;
+  }
+  @media (min-width: 1280px) {
+    width: 100vw;
+    padding-top: 0px;
+  }
+  @media (min-width: 1536px) {
+    width: 100vw;
+    padding-top: 0px;
+  }
+}
+
+.landing {
+  display: flex;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  @media (min-width: 640px) {
+    width: 100vw;
+    height: fit-content;
+  }
+  @media (min-width: 768px) {
+    width: 100vw;
+    height: 24rem;
+  }
+  @media (min-width: 1024px) {
+    width: 100vw;
+    height: 100vh;
+  }
+  // @media (min-width: 1280px) {
+  // }
+  // @media (min-width: 1536px) {
+  // }
+}
+
+// .cocktails {
+// }
+
+.logoBanner {
+  grid-column: span 1;
+  justify-items: center;
+  display: flex;
+  flex-shrink: true;
 }
