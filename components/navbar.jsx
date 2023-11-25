@@ -17,7 +17,7 @@ export default function Navbar() {
   return (
     <Disclosure
       as="nav"
-      className="z-20 w-full bg-bleached-silk shadow sticky top-0 font-serif"
+      className="z-20 w-full bg-bleached-silk shadow sticky top-0"
     >
       {({ open }) => (
         <>

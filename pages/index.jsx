@@ -81,7 +81,7 @@ export default function Home() {
         <div id="sidebar" className="fixed top-0 left-0 z-40 h-screen p-4 transition-transform -translate-x-full xl:translate-x-0 bg-white w-shrink dark:bg-gray-800 inline">
           <Sidebar />
         </div>
-        <div id="navbar" className="fixed top-0 left-0 right-0 z-40 w-full p-4 transition-transform xl:-translate-y-full translate-y-0 bg-white dark:bg-gray-800">
+        <div id="navbar" className="fixed top-0 left-0 right-0 z-40 w-full transition-transform xl:-translate-y-full translate-y-0 bg-white dark:bg-gray-800">
           <Navbar />
         </div>
         <Landing />

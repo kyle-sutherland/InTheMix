@@ -24,15 +24,17 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Local Netlify folder
-.netlify
+# Local Vercel folder
+.vercel
 
 #IDE stuff
 /.vscode
 /.idea
 /.visualstudio
+.vercel
