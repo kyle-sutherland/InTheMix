@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 //props
 import ContactForm from "@components/ContactForm";
-import { LinkButton } from "@components/buttons";
+import { LandingButton } from "@components/buttons";
 import Carousel from "@components/carousel";
 import banner from "../public/main-animation.gif"
 import Link from "next/link";
@@ -29,7 +29,47 @@ export default function Home() {
       width: 500,
       desc: "The Red Rita, our fall inspired margarita. Made with cranberry juice, and a spiced simple syrup, gives this traditional summer drink a Canadian winter twist!",
       id: 2,
-    }
+    },
+    {
+      src: "/drink2.jpg",
+      alt: "",
+      height: 500,
+      width: 500,
+      desc: "",
+      id : 3,
+    },
+    {
+      src: "/drink3.jpg",
+      alt: "",
+      height: 500,
+      width: 500,
+      desc: "",
+      id: 4,
+    },
+    {
+      src: "/drink4.jpg",
+      alt: "",
+      height: 500,
+      width: 500,
+      desc: "",
+      id: 5,
+    },
+    {
+      src: "/drink5.jpg",
+      alt: "",
+      height: 500,
+      width: 500,
+      desc: "",
+      id: 6,
+    },
+    // {
+    //   src: "",
+    //   alt: "",
+    //   height: 500,
+    //   width: 500,
+    //   desc: "",
+    //   id: 7,
+    // },
   ]
   return (
     <>
@@ -45,8 +85,8 @@ export default function Home() {
           <Navbar />
         </div>
         <Landing />
-        <div className="xl:ml-72 mx-0">
-          <div className="flex flex-col mx-auto container max-w-7xl">
+        <div className="body-content">
+          <div id="about" className="flex flex-col mx-auto container xl:max-w-7xl">
             <h2>ABOUT US</h2>
             <div className="container">
               <div className="container grid md:grid-cols-2">
@@ -89,7 +129,7 @@ export default function Home() {
                   <Image src="/group-drinks.jpg"
                     height={300}
                     width={500}
-                  />
+                   alt={""}/>
                 </div>
               </div>
               <div className="container grid md:grid-cols-2">
@@ -111,14 +151,16 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col">
-              <h2>SIGNATURE COCKTAILS</h2>
-              {/*Cocktails-list*/}
-              <Carousel images={cocktailCarouselImages} />
+              <div id="cocktails" className="container cocktails">
+                <h2>SIGNATURE COCKTAILS</h2>
+                {/*Cocktails-list*/}
+                <Carousel images={cocktailCarouselImages} />
+              </div>
             </div>
             <div className="flex flex-col">
               {/*Reviews*/}
             </div>
-            <div className="flex flex-col container">
+            <div id="contact" className="flex flex-col container">
               <h2>CONTACT US</h2>
               {/*Contact*/}
               <div className="container grid md:grid-cols-2">

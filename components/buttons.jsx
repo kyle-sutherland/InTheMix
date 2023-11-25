@@ -1,16 +1,19 @@
 import React from "react";
 
-const buttonStyle =
-  "bg-bosporus px-3 py-2 text-sm text-bleached-silk shadow-sm hover:bg-opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-thistle-blossom";
+const landingButtonStyle =
+  "bg-white outline outline-2 px-6 py-4 text-sm text-slate-950 outline-offset-0 outline-white hover:text-white hover:bg-opacity-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate";
 
-export function LinkButton({ link, text, target, rel }) {
+const actionButtonStyle =
+  "bg-slate-950 outline outline-2 px-3 py-2 text-sm text-white outline-offset-0 outline-slate-950 hover:text-slate-950 hover:bg-opacity-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate";
+
+export function LandingButton({ link, text, target, rel }) {
   return (
     <>
       <a
         href={link ? link : "#"}
         target={target ? target : ""}
         rel={rel ? rel : ""}
-        className={buttonStyle}
+        className={landingButtonStyle}
       >
         {text}
       </a>
@@ -22,7 +25,7 @@ export function ActionButton({ type, text, disabled }) {
   return (
     <>
       <button
-        className={buttonStyle}
+        className={actionButtonStyle}
         type={type}
         disabled={disabled ? disabled : false}
       >

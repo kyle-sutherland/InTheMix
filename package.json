@@ -18,6 +18,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@netlify/plugin-nextjs": "^4.41.2",
     "autoprefixer": "^10.4.16",
     "flowbite": "^2.0.0",
