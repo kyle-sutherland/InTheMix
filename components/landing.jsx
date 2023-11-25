@@ -21,7 +21,7 @@ return(
         Years of Experience, Quality Concoctions, Crafted Cocktails
       </p>
     </div>
-    <LandingButton text="CONTACT US"/>
+    <LandingButton text="CONTACT US" link="/#contact"/>
   </div>
   </div>
   </>

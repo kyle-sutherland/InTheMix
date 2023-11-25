@@ -23,7 +23,7 @@ export default function ContactForm() {
 
       <button
         className="btn btn-primary text-dark"
-        onClick={() => router.replace("/contact", undefined, { shallow: true })}
+        onClick={() => router.replace("/#contact", undefined, { shallow: true })}
       >
         {" "}
         Submit Another Response{" "}
@@ -37,7 +37,7 @@ export default function ContactForm() {
       <form
         method="POST"
         name="contact-form"
-        action="/?success=true"
+        action="/?success=true#contact"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       // data-netlify-recaptcha="true"

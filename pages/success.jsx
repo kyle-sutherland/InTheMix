@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import Footer from '@components/Footer'
 
 export default function Success() {
   return (
@@ -16,7 +15,6 @@ export default function Success() {
         <p>Thank you for your feedback! Head back to the <Link href="/"><a>home page</a></Link>.</p>
       </main>
 
-      <Footer />
     </div>
   )
 }
