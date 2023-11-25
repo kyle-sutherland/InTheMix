@@ -6,7 +6,7 @@ return(
   <>
 <div className="landing bg-slate-300 opacity-75">
   <Image
-              src="/main-animation.gif"
+              src="/main-animation-opt.gif"
               className="landingImage"
               fill={true}
              alt=""/>
