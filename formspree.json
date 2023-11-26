@@ -6,7 +6,7 @@
         "email": { "type": "email", "required": true },
         "message": { "type": "text", "required": true }
       },
-      "actions": [{ "type": "email", "to": "mynameiskylesutherland@gmail.com" }]
+      "actions": [{ "type": "email", "to": "inthemixcalgary@gmail.com" }]
     }
   }
 }
