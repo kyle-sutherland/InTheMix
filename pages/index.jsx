@@ -1,11 +1,10 @@
 //react objects
 import Head from "next/head";
 import Image from "next/image";
+import { Analytics } from "@vercel/analytics/react"
 //props
 import ContactForm from "@components/ContactForm";
-import { LandingButton } from "@components/buttons";
 import Carousel from "@components/carousel";
-import banner from "../public/main-animation.gif"
 import Link from "next/link";
 import Landing from "@components/landing";
 import Sidebar from "@components/sidebar";
@@ -183,6 +182,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <Analytics />
       </main>
     </>
   );
