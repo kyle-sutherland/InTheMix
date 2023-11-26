@@ -31,10 +31,11 @@ yarn-error.log*
 .env.production.local
 
 # Local Vercel folder
-.vercel
+/.vercel
 
 #IDE stuff
 /.vscode
 /.idea
 /.visualstudio
 .vercel
+.env*.local
