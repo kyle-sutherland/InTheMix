@@ -90,11 +90,12 @@ export default function ContactForm() {
           </div>
         </div>
         <div className="mt-6 flex justify-end gap-x-6">
-          <ActionButton text="submit" type="submit" disabled={state.submitting} />
+          <ActionButton text="Submit" type="submit" disabled={state.submitting} />
         </div>
       </div>
     </form>
   );
 }
+
 
 

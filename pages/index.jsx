@@ -170,9 +170,9 @@ export default function Home() {
                   </p>
                   <h1>In The Mix</h1>
                   <p>
-                    <Link href="#">587-893-2204</Link>
+                    <Link href="#contact">587-893-2204</Link>
                   </p><p>
-                    <Link href="#">inthemixcalgary@gmail.com</Link>
+                    <Link href="#contact">inthemixcalgary@gmail.com</Link>
                   </p>
                 </div>
                 <div className="md:order-first md:basis-1/2 p-3">
