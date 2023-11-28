@@ -10,7 +10,7 @@ export default function ContactForm() {
   const [state, handleSubmit] = useForm("contactForm");
   const [submitterName, setSubmitterName] = useState("");
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    return <p>Thanks for reaching out! Robyn will be in touch soon.</p>;
   }
   return (
     <form onSubmit={handleSubmit}>

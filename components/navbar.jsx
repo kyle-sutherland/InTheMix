@@ -24,13 +24,14 @@ export default function Navbar() {
           <div className="justify-between pr-4 lg:pr-0 mx-auto lg:max-w-7xl md:items-center md:flex md:pr-8">
             <div>
               <div className="flex items-center justify-between md:block">
-                <a href="/">
+                <a href="#">
                   <Image
                     src="/In-The-Mix(teal).jpg"
                     width={240}
                     height={64}
                     alt="navigate to home"
                     aria-label="Navigate to homepage"
+                    className="h-24 object-cover overflow-hidden"
                   />
                 </a>
                 <div className="md:hidden">

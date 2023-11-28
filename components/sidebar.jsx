@@ -3,7 +3,7 @@ import Image from "next/image";
 function Sidebar() {
   return (
     <div>
-      <div className="pt-0 pr-0 pb-0 pl-0 mt-0 mr-0 mb-0 ml-0">
+      <div className="mx-auto pt-0 pr-0 pb-0 pl-0 mt-0 mr-0 mb-0 ml-0">
         <Image
           src="/In-The-Mix(teal).jpg"
           width={240}
@@ -157,20 +157,15 @@ function Sidebar() {
                           <span>About Us</span>
                         </a>
                         <a href="/#cocktails" className="font-medium text-sm items-center rounded-lg text-gray-900 px-4 py-2.5 flex
-                          transition-all duration-200 hover:bg-gray-200 group cursor-pointer" >
+                          transition-all duration-200 hover:bg-gray-200 group cursor-pointer">
                           <span className="justify-center items-center flex">
                             <span className="justify-center items-center flex">
                               <span className="justify-center items-center flex">
                                 <span className="items-center justify-center flex">
-                                  <svg className="mr-4" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg" /><circle cx="12" cy="12" r="10" stroke="#4F4F4F"
-                                      strokeWidth="2" strokeLinecap="round" /><path d="M7.88124 15.7559C8.37391 16.1826
-                                9.02309 16.4909 9.72265 16.6928C10.4301 16.897 11.2142 17 12 17C12.7858 17 13.5699
-                                16.897 14.2774 16.6928C14.9769 16.4909 15.6261 16.1826 16.1188 15.7559" stroke="#4F4F4F"
-                                        strokeWidth="2" strokeLinecap="round" /><circle cx="9" cy="10" r="1.25" fill="#4F4F4F"
-                                          stroke="#4F4F4F" strokeWidth="0.5" strokeLinecap="round" /><circle cx="15" cy="10"
-                                            r="1.25" fill="#4F4F4F" stroke="#4F4F4F" strokeWidth="0.5"
-                                            strokeLinecap="round" />
+                                  <svg className="flex-shrink-0 w-5 h-5 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" /><path strokeLinecap="round"
+                                      strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0
+                                0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                                 </span>
                               </span>
                             </span>
