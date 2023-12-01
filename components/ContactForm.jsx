@@ -1,6 +1,6 @@
 //modules
 import React, { useState } from 'react'
-import { useForm, ValidationError } from '@formspree/react'
+import { useForm } from 'react-hook-form'
 //styles
 // import styles from './ContactForm.module.css'
 //components
@@ -8,12 +8,14 @@ import { ActionButton } from 'components/buttons'
 import Datepicker from 'react-tailwindcss-datepicker';
 
 export default function ContactForm() {
-  const [state, handleSubmit] = useForm("contactForm");
+  const {register, handleSubmit} = useForm();
   const [submitterName, setSubmitterName] = useState("");
   const [value, setValue] = useState({
     startDate: new Date(),
     endDate: new Date().setMonth(11)
   });
+
+  const onSubmit = (data) => console.log(data)
 
   const handleValueChange = (newValue) => {
     console.log("newValue:", newValue);
@@ -25,7 +27,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="container grid grid-flow-dense auto-cols-auto grid-rows-3">
         <input
           type="hidden"
@@ -53,6 +55,7 @@ export default function ContactForm() {
                     onChange={(e) => setSubmitterName(e.target.value)}
                     type="text"
                     className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
+                    {...register("name")}
                   />
                 </div>
               </div>
@@ -73,11 +76,6 @@ export default function ContactForm() {
                       name="email"
                       required
                       className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
-                    />
-                    <ValidationError
-                      prefix="Email"
-                      field="email"
-                      errors={state.errors}
                     />
                   </div>
                 </div>
@@ -166,11 +164,7 @@ export default function ContactForm() {
                   className="block w-full  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
                   rows={3}
                 />
-                <ValidationError
-                  prefix="Message"
-                  field="message"
-                  errors={state.errors}
-                />
+                
               </div>
             </div>
           </div>
