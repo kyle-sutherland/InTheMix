@@ -1,6 +1,7 @@
 //modules
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
 //styles
 // import styles from './ContactForm.module.css'
 //components
@@ -8,13 +9,16 @@ import { ActionButton } from 'components/buttons'
 import Datepicker from 'react-tailwindcss-datepicker';
 
 export default function ContactForm() {
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
   const [submitterName, setSubmitterName] = useState("");
   const [value, setValue] = useState({
     startDate: new Date(),
     endDate: new Date().setMonth(11)
   });
-
+  const router = useRouter();
+  const confirmationScreenVisible =
+    router.query?.success && router.query.success === "true";
+  const formVisible = !confirmationScreenVisible;
   const onSubmit = (data) => console.log(data)
 
   const handleValueChange = (newValue) => {
@@ -22,12 +26,16 @@ export default function ContactForm() {
     setValue(newValue);
   }
 
-  if (state.succeeded) {
-    return <p>Thanks for reaching out! Robyn will be in touch soon.</p>;
-  }
+  const confirmationMessage = (
+    <React.Fragment>
+      <p>Thanks for reaching out! Robyn will be in touch soon.</p>;
+    </React.Fragment>
+  );
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+  const form = (
+    <form onSubmit={handleSubmit(onSubmit)}
+      action="#contact/?success=true"
+    >
       <div className="container grid grid-flow-dense auto-cols-auto grid-rows-3">
         <input
           type="hidden"
@@ -37,7 +45,7 @@ export default function ContactForm() {
         <input type="hidden" name="form-name" value="contact-form" />
         <p hidden>
           <label>
-            <input type="text" name="_gotcha" className="hidden" />
+            <input type="text" name="_gotcha" className="hidden" {...register("_gotcha")}/>
           </label>
         </p>
         <div>
@@ -76,6 +84,7 @@ export default function ContactForm() {
                       name="email"
                       required
                       className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
+                      {...register("email")}
                     />
                   </div>
                 </div>
@@ -94,6 +103,7 @@ export default function ContactForm() {
                       type="text"
                       name="phone"
                       className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
+                      {...register("phone")}
                     />
                   </div>
                 </div>
@@ -113,7 +123,9 @@ export default function ContactForm() {
                     type="number"
                     name="guests"
                     required
-                    className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6" />
+                    className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6" 
+                    {...register("guests")}
+                  />
                 </div>
               </div>
             </div>
@@ -130,7 +142,9 @@ export default function ContactForm() {
                   type="checkbox"
                   name="bool-cocktails"
                   required
-                  className="flex-1 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light" />
+                  className="flex-1 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light"
+                  {...register("bool-cocktails")}
+                  />
               </div>
             </div>
             <div>
@@ -142,6 +156,8 @@ export default function ContactForm() {
               </label>
               <div className="mt-2 items-center">
                 <Datepicker
+                  id="date"
+                  name="date"
                   value={value}
                   onChange={handleValueChange}
                 />
@@ -163,20 +179,26 @@ export default function ContactForm() {
                   required
                   className="block w-full  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
                   rows={3}
+                  {...register("message")}
                 />
-                
+
               </div>
             </div>
           </div>
           <div className="">
             <div className="mt-6 flex justify-end gap-x-6">
-              <ActionButton text="Submit" type="submit" disabled={state.submitting} />
+              <ActionButton text="Submit" type="submit" />
             </div>
           </div>
         </div>
       </div>
     </form>
   );
+  return (
+  <>
+    {formVisible ? form : confirmationMessage}
+  </>
+  )
 }
 
 
