@@ -1,24 +1,22 @@
 //modules
-import React, { useState } from 'react'
-import { useForm, ValidationError } from '@formspree/react'
-//styles
-// import styles from './ContactForm.module.css'
+import React, { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 //components
-import { ActionButton } from 'components/buttons'
-import Datepicker from 'react-tailwindcss-datepicker';
+import { ActionButton } from "components/buttons";
+import Datepicker from "react-tailwindcss-datepicker";
 
 export default function ContactForm() {
   const [state, handleSubmit] = useForm("contactForm");
   const [submitterName, setSubmitterName] = useState("");
   const [value, setValue] = useState({
     startDate: new Date(),
-    endDate: new Date().setMonth(11)
+    endDate: new Date().setMonth(11),
   });
 
   const handleValueChange = (newValue) => {
     console.log("newValue:", newValue);
     setValue(newValue);
-  }
+  };
 
   if (state.succeeded) {
     return <p>Thanks for reaching out! Robyn will be in touch soon.</p>;
@@ -41,7 +39,10 @@ export default function ContactForm() {
         <div>
           <div className="mt-0">
             <div className="">
-              <label htmlFor="name" className="block text-sm font-medium leading-6">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium leading-6"
+              >
                 Name
               </label>
               <div className="mt-2">
@@ -115,7 +116,8 @@ export default function ContactForm() {
                     type="number"
                     name="guests"
                     required
-                    className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6" />
+                    className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
+                  />
                 </div>
               </div>
             </div>
@@ -132,21 +134,16 @@ export default function ContactForm() {
                   type="checkbox"
                   name="bool-cocktails"
                   required
-                  className="flex-1 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light" />
+                  className="flex-1 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light"
+                />
               </div>
             </div>
             <div>
-              <label
-                htmlFor="date"
-                className="text-sm font-medium leading-6"
-              >
+              <label htmlFor="date" className="text-sm font-medium leading-6">
                 When is your event?
               </label>
               <div className="mt-2 items-center">
-                <Datepicker
-                  value={value}
-                  onChange={handleValueChange}
-                />
+                <Datepicker value={value} onChange={handleValueChange} />
               </div>
             </div>
           </div>
@@ -176,7 +173,11 @@ export default function ContactForm() {
           </div>
           <div className="">
             <div className="mt-6 flex justify-end gap-x-6">
-              <ActionButton text="Submit" type="submit" disabled={state.submitting} />
+              <ActionButton
+                text="Submit"
+                type="submit"
+                disabled={state.submitting}
+              />
             </div>
           </div>
         </div>
@@ -184,6 +185,3 @@ export default function ContactForm() {
     </form>
   );
 }
-
-
-
