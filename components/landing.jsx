@@ -15,7 +15,7 @@ export default function Landing() {
           priority={true}
         />
         <div className="landingContent text-stone-50 mx-auto text-center py-48">
-          <div className="text-6xl p-3">
+          <div className="landingTitle text-6xl p-3">
             <p>
               Pride in the Pour
             </p>

@@ -1,5 +1,5 @@
-import { FormspreeProvider } from '@formspree/react';
-import '@styles/globals.scss'
+import { FormspreeProvider } from "@formspree/react";
+import "@styles/globals.scss";
 
 function Application({ Component, pageProps }) {
   return (
@@ -9,4 +9,4 @@ function Application({ Component, pageProps }) {
   );
 }
 
-export default Application
+export default Application;

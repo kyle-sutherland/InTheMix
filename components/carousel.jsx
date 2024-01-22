@@ -38,22 +38,23 @@ export default function Carousel({ images }) {
           {images.map((image, index) => {
             if (index === currentSlide) {
               return (
-                  <div className="flex flex-col lg:flex-row lg:h-full" key={image.id}>
-                    <div className="carousel-image flex container mx-auto justify-center lg:justify-start lg:ml-12">
-                      <Image
-                        src={image.src}
-                        height={image.height}
-                        width={image.width}
-                        alt={image.alt}
-                        className="transition-opacity ease-in-out object-cover h-96 w-96 lg:w-full lg:h-full"
-                      />
-                    </div>
-                    <div className="carousel-text text-center items-center flex mx-12">
-                      <div>
-                        {image.desc}
-                      </div>
-                    </div>
+                <div
+                  className="flex flex-col lg:flex-row lg:h-full"
+                  key={image.id}
+                >
+                  <div className="carousel-image flex container mx-auto justify-center lg:justify-start lg:ml-12">
+                    <Image
+                      src={image.src}
+                      height={image.height}
+                      width={image.width}
+                      alt={image.alt}
+                      className="transition-opacity ease-in-out object-cover h-96 w-96 lg:w-full lg:h-full"
+                    />
                   </div>
+                  <div className="carousel-text text-center items-center flex mx-12">
+                    <div>{image.desc}</div>
+                  </div>
+                </div>
               );
             }
           })}
