@@ -17,7 +17,7 @@ export default function Navbar() {
   return (
     <Disclosure
       as="nav"
-      className="z-20 w-full bg-bleached-silk shadow sticky top-0"
+      className="navigation z-20 w-full bg-bleached-silk shadow sticky top-0"
     >
       {({ open }) => (
         <>
@@ -80,7 +80,7 @@ export default function Navbar() {
                         item.current
                           ? "text-gray-900 bg-gray-200"
                           : "text-charcoal bg-inherit hover:bg-gray-200 hover:text-gray-900",
-                        "rounded-md px-3 py-2"
+                        "rounded-md px-3 py-2",
                       )}
                       aria-label={item.name}
                       aria-current={item.current ? "page" : undefined}
@@ -103,7 +103,7 @@ export default function Navbar() {
                     item.current
                       ? "text-gray-900 bg-gray-300"
                       : "text-charcoal bg-inherit hover:bg-gray-200 hover:text-gray-900",
-                    "block rounded-md px-3 py-2 text-base font-medium"
+                    "block rounded-md px-3 py-2 text-base font-medium",
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >

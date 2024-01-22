@@ -6,8 +6,15 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    Verdana,
+    Roboto,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    sans-serif,
+    -apple-system,
+    BlinkMacSystemFont;
 }
 
 * {
@@ -17,7 +24,8 @@ body {
 h2 {
   text-align: center;
   padding: 3rem;
-  font-size: 24px; 
+  font-size: 24px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 h3 {
   text-align: center;
@@ -32,6 +40,10 @@ hr {
   text-align: center;
 }
 
+.navigation {
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 .about-image {
   justify-items: center;
   margin: auto;
@@ -41,6 +53,9 @@ hr {
   z-index: 20;
 }
 
+.landingTitle {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 .landingImage {
   z-index: -10;
   object-fit: cover;
