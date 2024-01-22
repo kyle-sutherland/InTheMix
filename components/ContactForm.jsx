@@ -1,30 +1,31 @@
 //modules
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/router'
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 //styles
 // import styles from './ContactForm.module.css'
 //components
-import { ActionButton } from 'components/buttons'
-import Datepicker from 'react-tailwindcss-datepicker';
+import { ActionButton } from "components/buttons";
+import Datepicker from "react-tailwindcss-datepicker";
 
 export default function ContactForm() {
   const { register, handleSubmit } = useForm();
   const [submitterName, setSubmitterName] = useState("");
   const [value, setValue] = useState({
     startDate: new Date(),
-    endDate: new Date().setMonth(11)
+    endDate: new Date().setMonth(11),
   });
   const router = useRouter();
   const confirmationScreenVisible =
     router.query?.success && router.query.success === "true";
   const formVisible = !confirmationScreenVisible;
-  const onSubmit = (data) => console.log(data)
+  //TODO: Make this send the email.
+  const onSubmit = (data) => console.log(data);
 
   const handleValueChange = (newValue) => {
     console.log("newValue:", newValue);
     setValue(newValue);
-  }
+  };
 
   const confirmationMessage = (
     <React.Fragment>
@@ -33,9 +34,7 @@ export default function ContactForm() {
   );
 
   const form = (
-    <form onSubmit={handleSubmit(onSubmit)}
-      action="#contact/?success=true"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} action="#contact/?success=true">
       <div className="container grid grid-flow-dense auto-cols-auto grid-rows-3">
         <input
           type="hidden"
@@ -45,13 +44,21 @@ export default function ContactForm() {
         <input type="hidden" name="form-name" value="contact-form" />
         <p hidden>
           <label>
-            <input type="text" name="_gotcha" className="hidden" {...register("_gotcha")}/>
+            <input
+              type="text"
+              name="_gotcha"
+              className="hidden"
+              {...register("_gotcha")}
+            />
           </label>
         </p>
         <div>
           <div className="mt-0">
             <div className="">
-              <label htmlFor="name" className="block text-sm font-medium leading-6">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium leading-6"
+              >
                 Name
               </label>
               <div className="mt-2">
@@ -123,7 +130,7 @@ export default function ContactForm() {
                     type="number"
                     name="guests"
                     required
-                    className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6" 
+                    className="block flex-1  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light sm:text-sm sm:leading-6"
                     {...register("guests")}
                   />
                 </div>
@@ -144,14 +151,11 @@ export default function ContactForm() {
                   required
                   className="flex-1 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light"
                   {...register("bool-cocktails")}
-                  />
+                />
               </div>
             </div>
             <div>
-              <label
-                htmlFor="date"
-                className="text-sm font-medium leading-6"
-              >
+              <label htmlFor="date" className="text-sm font-medium leading-6">
                 When is your event?
               </label>
               <div className="mt-2 items-center">
@@ -181,7 +185,6 @@ export default function ContactForm() {
                   rows={3}
                   {...register("message")}
                 />
-
               </div>
             </div>
           </div>
@@ -194,12 +197,5 @@ export default function ContactForm() {
       </div>
     </form>
   );
-  return (
-  <>
-    {formVisible ? form : confirmationMessage}
-  </>
-  )
+  return <>{formVisible ? form : confirmationMessage}</>;
 }
-
-
-
