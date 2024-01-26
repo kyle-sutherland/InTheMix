@@ -51,8 +51,9 @@ export default function Carousel({ images }) {
                       className="transition-opacity ease-in-out object-cover h-96 w-96 lg:w-full lg:h-full"
                     />
                   </div>
-                  <div className="carousel-text text-center items-center flex mx-12">
-                    <div>{image.desc}</div>
+                  <div className="text-center items-center flex-col mx-12 my-auto" >
+                    <div className="carousel-title py-4">{image.title}</div>
+                    <div className="carousel-text">{image.desc}</div>
                   </div>
                 </div>
               );
