@@ -14,12 +14,12 @@ export default function Carousel({ images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleNextSlide = () => {
-    let newSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1;
+    const newSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1;
     setCurrentSlide(newSlide);
   };
 
   const handlePrevSlide = () => {
-    let newSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1;
+    const newSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1;
     setCurrentSlide(newSlide);
   };
 
@@ -51,7 +51,7 @@ export default function Carousel({ images }) {
                       className="transition-opacity ease-in-out object-cover h-96 w-96 lg:w-full lg:h-full"
                     />
                   </div>
-                  <div className="text-center items-center flex-col mx-12 my-auto" >
+                  <div className="text-center items-center flex-col mx-12 my-auto">
                     <div className="carousel-title py-4">{image.title}</div>
                     <div className="carousel-text">{image.desc}</div>
                   </div>

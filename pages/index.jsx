@@ -1,14 +1,9 @@
-//react objects
-import Head from "next/head";
 import Image from "next/image";
-import { Analytics } from "@vercel/analytics/react";
-//props
 import ContactForm from "@components/ContactForm";
 import Carousel from "@components/carousel";
 import Link from "next/link";
 import Landing from "@components/landing";
-import Sidebar from "@components/sidebar";
-import Navbar from "@components/navbar";
+import Layout from "pages/layout"
 
 export default function Home() {
   const cocktailCarouselImages = [
@@ -78,23 +73,7 @@ export default function Home() {
   ];
   return (
     <>
-      <Head>
-        <title>In The Mix Bartending</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-        <div
-          id="sidebar"
-          className="fixed top-0 left-0 z-40 h-screen p-4 transition-transform -translate-x-full xl:translate-x-0 bg-white w-shrink dark:bg-gray-800 inline"
-        >
-          <Sidebar />
-        </div>
-        <div
-          id="navbar"
-          className="fixed top-0 left-0 right-0 z-40 w-full transition-transform xl:-translate-y-full translate-y-0 bg-white dark:bg-gray-800"
-        >
-          <Navbar />
-        </div>
+      <Layout>
         <Landing />
         <div className="body-content">
           <div
@@ -200,8 +179,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Analytics />
-      </main>
+        </Layout>
     </>
   );
 }
