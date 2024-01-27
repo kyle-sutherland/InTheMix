@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link"
 
 function Sidebar() {
   return (
@@ -23,7 +24,7 @@ function Sidebar() {
                   <div className="space-y-4">
                     <div>
                       <div className="navigation mt-4 bg-top bg-cover space-y-1">
-                        <a
+                        <Link
                           href="/#about"
                           className="font-medium  items-center rounded-lg text-gray-900 px-4 py-2.5 flex
                           transition-all duration-200 hover:bg-gray-200 group cursor-pointer"
@@ -52,8 +53,8 @@ function Sidebar() {
                             </span>
                           </span>
                           <span>About Us</span>
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="/#cocktails"
                           className="font-medium  items-center rounded-lg text-gray-900 px-4 py-2.5 flex
                           transition-all duration-200 hover:bg-gray-200 group cursor-pointer"
@@ -81,8 +82,8 @@ function Sidebar() {
                             </span>
                           </span>
                           <span>Signature Cocktails</span>
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="/#contact"
                           className="font-medium  items-center rounded-lg text-gray-900 px-4 py-2.5 flex
                           transition-all duration-200 hover:bg-gray-200 group cursor-pointer"
@@ -110,7 +111,7 @@ function Sidebar() {
                             </span>
                           </span>
                           <span>Contact</span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
