@@ -15,6 +15,7 @@ import drink2Img from "public/drink2.jpg"
 import drink3Img from "public/drink3.jpg"
 import drink4Img from "public/drink4.jpg"
 import drink5Img from "public/drink5.jpg"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
   const cocktailCarouselImages = [
@@ -89,6 +90,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <SpeedInsights />
         <div
           id="sidebar"
           className="fixed top-0 left-0 z-40 h-screen p-4 transition-transform -translate-x-full xl:translate-x-0 bg-white w-shrink dark:bg-gray-800 inline"
