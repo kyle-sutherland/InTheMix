@@ -17,6 +17,8 @@
 
 # misc
 .DS_Store
+commitlint.config.js
+.eslintrc.json
 
 # debug
 npm-debug.log*
@@ -29,6 +31,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
 
 # Local Vercel folder
 /.vercel
