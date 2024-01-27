@@ -1,6 +1,5 @@
 import { FormspreeProvider } from "@formspree/react";
 import "@styles/globals.scss";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 function Application({ Component, pageProps }) {
   return (
