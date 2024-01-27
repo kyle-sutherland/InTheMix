@@ -9,11 +9,17 @@ import Link from "next/link";
 import Landing from "@components/landing";
 import Sidebar from "@components/sidebar";
 import Navbar from "@components/navbar";
+import atumnSourImg from "public/autumn-sour.jpg"
+import drink1Img from "public/drink1.jpg"
+import drink2Img from "public/drink2.jpg"
+import drink3Img from "public/drink3.jpg"
+import drink4Img from "public/drink4.jpg"
+import drink5Img from "public/drink5.jpg"
 
 export default function Home() {
   const cocktailCarouselImages = [
     {
-      src: "/autumn-sour.jpg",
+      src: atumnSourImg,
       alt: "",
       height: 500,
       width: 500,
@@ -22,7 +28,7 @@ export default function Home() {
       id: 1,
     },
     {
-      src: "/drink2.jpg",
+      src: drink2Img,
       alt: "",
       height: 500,
       width: 500,
@@ -31,7 +37,7 @@ export default function Home() {
       id: 2,
     },
     {
-      src: "/drink3.jpg",
+      src: drink3Img,
       alt: "",
       height: 500,
       width: 500,
@@ -40,7 +46,7 @@ export default function Home() {
       id: 3,
     },
     {
-      src: "/drink5.jpg",
+      src: drink4Img,
       alt: "",
       height: 500,
       width: 500,
@@ -49,7 +55,7 @@ export default function Home() {
       id: 4,
     },
     {
-      src: "/drink4.jpg",
+      src: drink5Img,
       alt: "",
       height: 500,
       width: 500,
@@ -58,7 +64,7 @@ export default function Home() {
       id: 5,
     },
     {
-      src: "/drink1.jpg",
+      src: drink1Img,
       alt: "",
       height: 500,
       width: 500,
@@ -107,6 +113,7 @@ export default function Home() {
                 <div className="about-image order-first basis-1/2 py-3 ps-3">
                   <Image
                     src="/cocktail-menu.jpg"
+                    alt=""
                     sizes="100vw"
                     width={500}
                     height={300}
@@ -121,11 +128,11 @@ export default function Home() {
                   <p>
                     In The Mix was founded by Robyn Sutherland. She began her
                     journey in the service industry in 2008 at a small local
-                    breakfast restaurant in Toronto, Daddy'os. In 2021, she
+                    breakfast restaurant in Toronto, Daddy&#39os. In 2021, she
                     decided to transition her skills from restaurants to events.
                     Robyn would like to bring her passion for mixology to your
                     wedding, your home, your backyard, or wherever you are or
-                    whatever event you're hosting. In The Mix will be there to
+                    whatever event you&#39re hosting. In The Mix will be there to
                     ensure it runs smoothly.
                   </p>
                 </div>

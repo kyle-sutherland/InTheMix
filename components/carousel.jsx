@@ -49,6 +49,8 @@ export default function Carousel({ images }) {
                       width={image.width}
                       alt={image.alt}
                       className="transition-opacity ease-in-out object-cover h-96 w-96 lg:w-full lg:h-full"
+                      placeholder="blur"
+                      loading = "lazy"
                     />
                   </div>
                   <div className="text-center items-center flex-col mx-12 my-auto" >
