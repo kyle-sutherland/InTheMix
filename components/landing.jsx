@@ -23,7 +23,7 @@ export default function Landing () {
             className='landingImage'
             fill
             alt=''
-            lazy
+            eager
           />
         </Suspense>
         <div className='landingContent text-stone-50 mx-auto text-center py-48'>
