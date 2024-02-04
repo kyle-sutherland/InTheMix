@@ -5,13 +5,13 @@ export default function Landing () {
   return (
     <>
       <div className='landing bg-slate-300 opacity-75'>
-          <Image
-            src='/main-animation-avif.avif'
-            className='landingImage'
-            fill
-            alt=''
-            eager
-          />
+        <Image
+          src='/main-animation-avif.avif'
+          className='landingImage'
+          fill
+          alt=''
+          eager='true'
+        />
         <div className='landingContent text-stone-50 mx-auto text-center py-48'>
           <div className='landingTitle text-6xl p-3'>
             <p>Pride in the Pour</p>
