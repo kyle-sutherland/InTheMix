@@ -115,17 +115,13 @@ export default function Home () {
             <h2>ABOUT US</h2>
             <div className='container'>
               <div className='container grid md:grid-cols-2'>
-                <div className='about-image order-first basis-1/2 py-3 ps-3'>
+                <div className='about-image order-first basis-1/2 p-3'>
                   <Image
                     src={cocktailMenuImg}
                     alt=''
-                    sizes='100vw'
+                    sizes='100vw, 50vw'
                     width={500}
                     height={300}
-                    style={{
-                      width: '100%',
-                      height: 'auto'
-                    }}
                     placeholder='blur'
                     loading='lazy'
                   />
@@ -135,11 +131,11 @@ export default function Home () {
                   <p>
                     In The Mix was founded by Robyn Sutherland. She began her
                     journey in the service industry in 2008 at a small local
-                    breakfast restaurant in Toronto, Daddy&#39os. In 2021, she
+                    breakfast restaurant in Toronto, Daddy&apos;os. In 2021, she
                     decided to transition her skills from restaurants to events.
                     Robyn would like to bring her passion for mixology to your
                     wedding, your home, your backyard, or wherever you are or
-                    whatever event you&#39re hosting. In The Mix will be there
+                    whatever event you&apos;re hosting. In The Mix will be there
                     to ensure it runs smoothly.
                   </p>
                 </div>
@@ -160,6 +156,7 @@ export default function Home () {
                 <div className='about-image md:order-last order-first basis-1/2 p-3'>
                   <Image
                     src={groupDrinksImg}
+                    sizes='100vw, 50vw'
                     height={300}
                     width={500}
                     alt=''
@@ -172,6 +169,7 @@ export default function Home () {
                 <div className='about-image order-first basis-1/2 p-3'>
                   <Image
                     src={firsideImg}
+                    sizes='100vw, 50vw'
                     height={300}
                     width={500}
                     alt=''

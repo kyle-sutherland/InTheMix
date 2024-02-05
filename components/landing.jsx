@@ -11,6 +11,7 @@ export default function Landing () {
           fill
           alt=''
           loading='eager'
+          sizes='100vw'
         />
         <div className='landingContent text-stone-50 mx-auto text-center py-48'>
           <div className='landingTitle text-6xl p-3'>
