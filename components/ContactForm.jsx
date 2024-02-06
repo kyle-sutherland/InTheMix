@@ -8,7 +8,7 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 
 export default function ContactForm () {
   const { executeRecaptcha } = useGoogleReCaptcha()
-  const [state, handleSubmit] = useForm('<hashid>', {
+  const [state, handleSubmit] = useForm('contactForm', {
     data: { 'g-recaptcha-response': executeRecaptcha }
   })
   const [submitterName, setSubmitterName] = useState('')
