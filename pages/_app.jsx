@@ -5,7 +5,9 @@ import '@styles/globals.scss'
 function Application ({ Component, pageProps }) {
   return (
     <FormspreeProvider project={process.env.NEXT_PUBLIC_FORMSPREE_PROJECT}>
-      <GoogleReCaptchaProvider reCaptchaKey={process.env.RECAPTCHA_KEY}>
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
+      >
         <Component {...pageProps} />
       </GoogleReCaptchaProvider>
     </FormspreeProvider>
