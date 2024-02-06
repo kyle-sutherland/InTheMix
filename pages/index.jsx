@@ -92,6 +92,7 @@ export default function Home () {
       <Head>
         <title>In The Mix Bartending</title>
         <link rel='icon' href='/favicon.ico' />
+        <meta name='referrer' content='origin' />
       </Head>
       <main>
         <SpeedInsights />
