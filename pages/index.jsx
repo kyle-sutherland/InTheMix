@@ -19,6 +19,7 @@ import groupDrinksImg from 'public/group-drinks.jpg'
 import firsideImg from 'public/fireside.jpg'
 import cocktailMenuImg from 'public/cocktail-menu.jpg'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
 export default function Home () {
   const cocktailCarouselImages = [
@@ -215,7 +216,11 @@ export default function Home () {
                   </p>
                 </div>
                 <div className='md:order-first md:basis-1/2 p-3'>
-                  <ContactForm />
+                  <GoogleReCaptchaProvider
+                    reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
+                  >
+                    <ContactForm />
+                  </GoogleReCaptchaProvider>
                 </div>
               </div>
             </div>
