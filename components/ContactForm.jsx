@@ -4,9 +4,13 @@ import { useForm, ValidationError } from '@formspree/react'
 // components
 import { ActionButton } from 'components/buttons'
 import Datepicker from 'react-tailwindcss-datepicker'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 
 export default function ContactForm () {
-  const [state, handleSubmit] = useForm('contactForm')
+  const { executeRecaptcha } = useGoogleReCaptcha()
+  const [state, handleSubmit] = useForm('<hashid>', {
+    data: { 'g-recaptcha-response': executeRecaptcha }
+  })
   const [submitterName, setSubmitterName] = useState('')
   const [value, setValue] = useState({
     startDate: new Date(),
