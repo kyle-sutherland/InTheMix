@@ -27,7 +27,7 @@ export default function ContactForm () {
   }
 
   return (
-    <form onSubmit={handleSubmit} method='POST'>
+    <form onSubmit={handleSubmit}>
       <div className='container grid grid-flow-dense auto-cols-auto grid-rows-3'>
         <input
           type='hidden'
