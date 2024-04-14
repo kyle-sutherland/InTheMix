@@ -42,3 +42,4 @@ yarn-error.log*
 /.visualstudio
 .vercel
 .env*.local
+.netlify
