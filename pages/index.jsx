@@ -7,71 +7,7 @@ import Layout from 'pages/layout'
 import { Fade } from 'react-awesome-reveal'
 
 export default function Home () {
-  const cocktailCarouselImages = [
-    {
-      src: '/autumn-sour.jpg',
-      alt: '',
-      height: 500,
-      width: 500,
-      title: 'Autumn Sour',
-      desc: 'A thoughtfully crafted sour made with apple cider to kick off the harvest season. Ask about our curated cocktail menus.',
-      id: 1
-    },
-    {
-      src: '/drink2.jpg',
-      alt: '',
-      height: 500,
-      width: 500,
-      title: 'Red Rita',
-      desc: 'This well-balanced mix of sweet and cozy spices, with a hint of tartness from the cranberry juice. This cocktail is a flavorful and enjoyable option for any occasion.',
-      id: 2
-    },
-    {
-      src: '/drink3.jpg',
-      alt: '',
-      height: 500,
-      width: 500,
-      title: 'Slamma Jamma',
-      desc: 'It’s a perfect balance of tropical sweetness and spiced complexity, offering a refreshing and adventurous flavor profile. Enjoy a mini  vacation in a glass with every sip.',
-      id: 3
-    },
-    {
-      src: '/drink5.jpg',
-      alt: '',
-      height: 500,
-      width: 500,
-      title: 'Fall Embrace',
-      desc: 'The fall embrace is perfect for those cool evenings, with warm  flavours of chai, cinnamon, and nutmeg.',
-      id: 4
-    },
-    {
-      src: '/drink4.jpg',
-      alt: '',
-      height: 500,
-      width: 500,
-      title: 'Summer Heat',
-      desc: 'This is a light and citrusy cocktail with a spicy kick that perfectly captures the essence of summer.',
-      id: 5
-    },
-    {
-      src: '/drink1.jpg',
-      alt: '',
-      height: 500,
-      width: 500,
-      title: '',
-      desc: '',
-      id: 6
-    }
-    // {
-    //   src: "",
-    //   alt: "",
-    //   height: 500,
-    //   width: 500,
-    //   title: "",
-    //   desc: "",
-    //   id: 7,
-    // },
-  ]
+  const cocktailCarouselImages = require('data/cocktails-carousel.json')
   return (
     <>
       <Layout>
