@@ -84,83 +84,75 @@ export default function Home () {
               <div id='about'>
                 <h2>ABOUT US</h2>
                 <div className='container'>
-                  <Fade
-                    cascade
-                    duration={1500}
-                    damping={0.1}
-                    fraction={0.2}
-                    triggerOnce='true'
-                  >
-                    <div className='container grid md:grid-cols-2'>
-                      <div className='about-image order-first basis-1/2 py-3 ps-3'>
-                        <Image
-                          src='/cocktail-menu.jpg'
-                          sizes='100vw'
-                          width={500}
-                          height={300}
-                          style={{
-                            width: '100%',
-                            height: 'auto'
-                          }}
-                        />
-                      </div>
-                      <div className='container oder-last text-center basis-1/2 p-3'>
-                        <h3>Cocktails with Experience</h3>
-                        <p>
-                          In The Mix was founded by Robyn Sutherland. She began
-                          her journey in the service industry in 2008 at a small
-                          local breakfast restaurant in Toronto, Daddyo&#39;s.
-                          In 2021, she decided to transition her skills from
-                          restaurants to events. Robyn would like to bring her
-                          passion for mixology to your wedding, your home, your
-                          backyard, or wherever you are or whatever event
-                          you&#39;re hosting. In The Mix will be there to ensure
-                          it runs smoothly.
-                        </p>
-                      </div>
+                  <div className='container grid md:grid-cols-2'>
+                    <div className='about-image order-first basis-1/2 py-3 ps-3'>
+                      <Image
+                        src='/cocktail-menu.jpg'
+                        sizes='100vw'
+                        width={500}
+                        height={300}
+                        style={{
+                          width: '100%',
+                          height: 'auto'
+                        }}
+                      />
                     </div>
-                    <div className='container grid md:grid-cols-2'>
-                      <div className='container md:order-first text-center order-last basis-1/2 p-3'>
-                        <h3>Bar Services for Your Event</h3>
-                        <p>In The Mix offers a range of services including:</p>
-                        <li>Hosted bar service</li>
-                        <li>Cash, ticket, or open bar service</li>
-                        <li>Specially Crafted Cocktail menu</li>
-                        <li>Bar setup and clean up</li>
-                        <p>
-                          Please contact us for further details about your event
-                          so we may tailor our services accordingly.
-                        </p>
-                      </div>
-                      <div className='about-image md:order-last order-first basis-1/2 p-3'>
-                        <Image
-                          src='/group-drinks.jpg'
-                          height={300}
-                          width={500}
-                          alt=''
-                        />
-                      </div>
+                    <div className='container oder-last text-center basis-1/2 p-3'>
+                      <h3>Cocktails with Experience</h3>
+                      <p>
+                        In The Mix was founded by Robyn Sutherland. She began
+                        her journey in the service industry in 2008 at a small
+                        local breakfast restaurant in Toronto, Daddyo&#39;s. In
+                        2021, she decided to transition her skills from
+                        restaurants to events. Robyn would like to bring her
+                        passion for mixology to your wedding, your home, your
+                        backyard, or wherever you are or whatever event
+                        you&#39;re hosting. In The Mix will be there to ensure
+                        it runs smoothly.
+                      </p>
                     </div>
-                    <div className='container grid md:grid-cols-2'>
-                      <div className='about-image order-first basis-1/2 p-3'>
-                        <Image
-                          src='/fireside.jpg'
-                          height={300}
-                          width={500}
-                          alt=''
-                        />
-                      </div>
-                      <div className='container order-last basis-1/2 text-center p-3'>
-                        <h3>Event Extras and Add-ons</h3>
-                        <p>
-                          We provide all of the non-alcoholic beverages, mixes,
-                          glassware, curated seasonal non-alcoholic/alcoholic
-                          cocktail menu, and bar for an additional charge.
-                          Please contact us for details.
-                        </p>
-                      </div>
+                  </div>
+                  <div className='container grid md:grid-cols-2'>
+                    <div className='container md:order-first text-center order-last basis-1/2 p-3'>
+                      <h3>Bar Services for Your Event</h3>
+                      <p>In The Mix offers a range of services including:</p>
+                      <li>Hosted bar service</li>
+                      <li>Cash, ticket, or open bar service</li>
+                      <li>Specially Crafted Cocktail menu</li>
+                      <li>Bar setup and clean up</li>
+                      <p>
+                        Please contact us for further details about your event
+                        so we may tailor our services accordingly.
+                      </p>
                     </div>
-                  </Fade>
+                    <div className='about-image md:order-last order-first basis-1/2 p-3'>
+                      <Image
+                        src='/group-drinks.jpg'
+                        height={300}
+                        width={500}
+                        alt=''
+                      />
+                    </div>
+                  </div>
+                  <div className='container grid md:grid-cols-2'>
+                    <div className='about-image order-first basis-1/2 p-3'>
+                      <Image
+                        src='/fireside.jpg'
+                        height={300}
+                        width={500}
+                        alt=''
+                      />
+                    </div>
+                    <div className='container order-last basis-1/2 text-center p-3'>
+                      <h3>Event Extras and Add-ons</h3>
+                      <p>
+                        We provide all of the non-alcoholic beverages, mixes,
+                        glassware, curated seasonal non-alcoholic/alcoholic
+                        cocktail menu, and bar for an additional charge. Please
+                        contact us for details.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className='flex flex-col'>
