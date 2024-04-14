@@ -120,9 +120,10 @@ hr {
   display: flex;
   position: relative;
   width: 100vw;
-  margin-bottom: 60vw;
+  margin-bottom: 20vw;
   @media (min-width: 1280px) {
     margin-left: 18rem;
+    margin-bottom: 10vw;
   }
   @media (min-width: 1920px) {
     width: 100vw;
