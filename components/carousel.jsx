@@ -14,14 +14,14 @@ export default function Carousel ({ images }) {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const handleNextSlide = () => {
-    const newSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1
-    setCurrentSlide(newSlide)
-  }
+    const newSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1;
+    setCurrentSlide(newSlide);
+  };
 
   const handlePrevSlide = () => {
-    const newSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1
-    setCurrentSlide(newSlide)
-  }
+    const newSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1;
+    setCurrentSlide(newSlide);
+  };
 
   return (
     <div className='relative h-full cocktails-carousel'>
@@ -57,9 +57,9 @@ export default function Carousel ({ images }) {
                       }}
                     />
                   </div>
-                  <div className='text-center items-center flex-col mx-12 my-auto'>
-                    <div className='carousel-title py-4'>{image.title}</div>
-                    <div className='carousel-text'>{image.desc}</div>
+                  <div className="text-center items-center flex-col mx-12 my-auto">
+                    <div className="carousel-title py-4">{image.title}</div>
+                    <div className="carousel-text">{image.desc}</div>
                   </div>
                 </div>
               )

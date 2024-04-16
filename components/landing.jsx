@@ -4,14 +4,13 @@ import Image from 'next/image'
 export default function Landing () {
   return (
     <>
-      <div className='landing bg-slate-300 opacity-75'>
+      <div className='landing bg-slate-300 opacity-75 mx-auto'>
         <Image
           src='/main-animation-avif.avif'
           className='landingImage'
           fill
           alt=''
-          loading='eager'
-          sizes='100vw'
+          priority
         />
         <div className='landingContent text-stone-50 mx-auto text-center py-48'>
           <div className='landingTitle text-6xl p-3'>

@@ -34,6 +34,18 @@ h3 {
   font-size: 18px;
 }
 
+h4 {
+  text-align: center;
+  padding: 2rem;
+  font-size: 48px;
+}
+
+h5 {
+  text-align: center;
+  padding-top: 0;
+  font-size: 36px;
+}
+
 hr {
   width: 100%;
 }
@@ -65,22 +77,19 @@ hr {
   overflow: hidden;
   @media (min-width: 640px) {
     width: 100vw;
-    height: max-content;
   }
   @media (min-width: 768px) {
     width: 100vw;
-    height: 24rem;
   }
   @media (min-width: 1024px) {
     width: 100vw;
-    height: 100vh;
   }
   @media (min-width: 1280px) {
-    width: 100vw;
+    width: 80vw;
     padding-top: 0px;
   }
   @media (min-width: 1536px) {
-    width: 100vw;
+    width: 80vw;
     padding-top: 0px;
   }
 }
@@ -92,12 +101,12 @@ hr {
   align-items: center;
   @media (min-width: 640px) {
     width: 100vw;
-    height: fit-content;
+    height: 56vw;
     padding-top: 10rem;
   }
   @media (min-width: 768px) {
     width: 100vw;
-    height: fit-content;
+    height: 50vw;
   }
   @media (min-width: 1024px) {
     width: 100vw;
@@ -105,13 +114,13 @@ hr {
     padding-top: 0;
   }
   @media (min-width: 1280px) {
-    width: 100vw;
-    margin-right: 0;
+    width: 80vw;
     margin-left: 18rem;
+    margin-right: 0;
   }
-  @media (min-width: 1920px) {
-    width: 100vw;
-    margin-left: 10rem;
+  @media (min-width: 1536px) {
+    width: 80vw;
+    margin-left: 24rem;
     margin-right: 0;
   }
 }
@@ -119,14 +128,15 @@ hr {
 .body-content {
   display: flex;
   position: relative;
-  width: 100vw;
-  margin-bottom: 60vw;
+  margin-bottom: 20vw;
   @media (min-width: 1280px) {
-    margin-left: 18rem;
+    margin-left: 20rem;
+    margin-bottom: 10vw;
+    width: 70vw;
   }
-  @media (min-width: 1920px) {
-    width: 100vw;
-    margin-left: 10rem;
+  @media (min-width: 1536px) {
+    width: 80vw;
+    margin-left: 24rem;
     margin-right: 0;
   }
 }
@@ -134,6 +144,75 @@ hr {
 .cocktails {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.cocktails-icon {
+  @media (max-width: 1024px) {
+    hidden: true;
+  }
+}
+
+.cocktails-list {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.cocktails-h1 {
+  text-align: center;
+  font-size: 72pt;
+  line-height: 80%;
+  padding-top: 0px;
+  padding-bottom: 5vw;
+  @media (min-width: 1280px) {
+    font-size: 112pt;
+  }
+  @media (min-width: 1536px) {
+    font-size: 136pt;
+  }
+}
+
+.cocktails-h2 {
+  font-size: 44pt;
+  @media (min-width: 1280px) {
+    font-size: 64pt;
+  }
+  @media (min-width: 1536px) {
+    font-size: 84pt;
+  }
+}
+
+.cocktails-name {
+  font-size: 32pt;
+}
+
+.cocktails-description {
+  font-size: 18pt;
+}
+
+.cocktails-ingredients {
+  font-size: 16pt;
+}
+
+.cocktails-banner {
+  z-index: -10;
+  overflow: hidden;
+  padding-top: 26px;
+  @media (min-width: 640px) {
+    width: 100vw;
+  }
+  @media (min-width: 768px) {
+    width: 100vw;
+    padding-top: 0px;
+  }
+  @media (min-width: 1024px) {
+    width: 100vw;
+  }
+  @media (min-width: 1280px) {
+    width: 72vw;
+  }
+  @media (min-width: 1536px) {
+    margin-left: 6rem;
+  }
 }
 
 .carousel-title {
@@ -147,8 +226,8 @@ hr {
   @media (min-width: 1024px) {
     height: 680px;
   }
-  //padding-top: 2rem;
-  //padding-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 0;
 }
 
 .logoBanner {
@@ -162,8 +241,10 @@ hr {
   scroll-margin-top: 140px;
 }
 #contact {
-  scroll-margin-top: 140px;
+  scroll-margin-top: 96px;
 }
 #about {
   scroll-margin-top: 96px;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }

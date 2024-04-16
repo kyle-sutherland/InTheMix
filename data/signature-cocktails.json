@@ -1,0 +1,276 @@
+[
+  {
+    "liquor": "Tequila",
+    "cocktails": [
+      {
+        "name": "Lovely Rita",
+        "description": "Named after the Beatles song, this drink is as fiery as John Lennon’s vocals. This spicy and smoky margarita is well balanced, fruity, and citrusy. This drink will have you singing “Lovely Rita, meter maid, nothing can come between us”",
+        "ingredients": [
+          "mezcal",
+          "lillet blanc",
+          "triple sec",
+          "lime",
+          "spicy serano syrup",
+          "pineapple juice"
+        ],
+        "image": "/cup2.png"
+      },
+      {
+        "name": "Spring in Japan",
+        "description": "Inspired by Japanese cherry blossoms, the freeze dried raspberries mimic the appearance of cherry blossom petals on snow. This beautiful and balanced cocktail is perfectly enjoyed all year round. It has forward flavours of dark fruits balanced with lemon and ginger tea syrup",
+        "ingredients": [
+          "tequila reposado",
+          "chambord",
+          "lemon",
+          "lemon ginger tea syrup",
+          "egg white",
+          "freeze dried raspberries"
+        ],
+        "image": "/cup1.png"
+      },
+      {
+        "name": "Red Rita",
+        "description": "This well-balanced mix of sweet and cozy spices, with a hint of tartness from the cranberry juice. This cocktail is a flavorful and enjoyable option for any occasion.",
+        "ingredients": [
+          "tequila",
+          "triple sec",
+          "cranberry juice",
+          "spiced simple syrup"
+        ],
+        "image": "/cup2.png"
+      },
+      {
+        "name": "Cloud 9",
+        "description": "This cocktail will have you on cloud 9, it is crushable and delicious.",
+        "ingredients": [
+          "tequila anejo",
+          "pineapple",
+          "vanilla syrup",
+          "lime",
+          "dash black walnut bitters"
+        ],
+        "image": "/cup1.png"
+      }
+    ]
+  },
+  {
+    "liquor": "Rum",
+    "cocktails": [
+      {
+        "name": "Slamma Jamma",
+        "description": "It’s a perfect balance of tropical sweetness and spiced complexity, offering a refreshing and adventurous flavor profile. Enjoy a mini vacation in a glass with every sip.",
+        "ingredients": [
+          "spiced rum",
+          "pineapple juice",
+          "lime",
+          "simple syrup",
+          "dash clove bitters"
+        ],
+        "image": "/cup1.png"
+      },
+      {
+        "name": "Pineapple Mojito",
+        "description": "This cocktail is a lively and invigorating sip of the tropics, perfect for a relaxing escape.",
+        "ingredients": [
+          "white rum",
+          "simple syrup",
+          "pineapple juice",
+          "muddled lime and mint",
+          "soda"
+        ],
+        "image": "/cup3.png"
+      },
+      {
+        "name": "Strawberry Rhubarb Dark & Stormy",
+        "description": "We love a twist on a classic cocktail, this fruity spin on a dark & stormy is light an refreshing. Perfect for summer nights.",
+        "ingredients": [
+          "spiced rum",
+          "strawberry syrup",
+          "rhubarb bitters",
+          "ginger beer",
+          "lime juice"
+        ],
+        "image": "/cup2.png"
+      }
+    ]
+  },
+  {
+    "liquor": "Whiskey",
+    "cocktails": [
+      {
+        "name": "English TEAser",
+        "description": "This refreshing and fruity cocktail is a delightful concoction that embodies the spirit of a sunny summer day, making it the perfect choice for a vibrant and sparkling sip.",
+        "ingredients": [
+          "bourbon",
+          "chambord",
+          "black tea syrup",
+          "lemon juice",
+          "soda"
+        ],
+        "image": "/cup3.png"
+      },
+      {
+        "name": "Autumn Sour",
+        "description": "This apple forward spin on a classic whiskey sour is bound to be a crowd pleaser. Inspired by fall flavours, this drink is cozy and inviting.",
+        "ingredients": [
+          "bourbon (or rye whiskey)",
+          "lemon juice",
+          "apple cider",
+          "egg white",
+          "0.5 oz simple syrup",
+          "dash cinnamon bitters"
+        ],
+        "image": "/cup1.png"
+      },
+      {
+        "name": "Elderflower Sour",
+        "description": "This whiskey sour is floral and savoury, with the thyme syrup balancing the floral notes of the elderflower liqueur.",
+        "ingredients": [
+          "bourbon",
+          "elderflower liqueur",
+          "thyme simple syrup",
+          "lemon",
+          "egg white",
+          "dash cinnamon bitters"
+        ],
+        "image": "/cup1.png"
+      },
+      {
+        "name": "The Clementine",
+        "description": "This spirit forward cocktail was inspired by our cat is a sip of mystery and elegance in every glass.",
+        "ingredients": [
+          "scotch whiskey",
+          "sweet vermouth",
+          "creme de cassis",
+          "earl grey tea",
+          "dash bitters",
+          "smoked glass",
+          "orange peel garnish"
+        ],
+        "image": "/cup2.png"
+      },
+      {
+        "name": "The Wilfred",
+        "description": "Named after our airedale terrier, although he lacks sophistication, this cocktail does not. With forward notes of earl grey tea and citrus, you’ll feel like you’re sipping pure elegance.",
+        "ingredients": [
+          "scotch whiskey",
+          "earl grey tea simple syrup",
+          "lemon juice",
+          "lemon peel garnish"
+        ],
+        "image": "/cup1.png"
+      },
+      {
+        "name": "Mulled Wine Old Fashioned",
+        "description": "A winter inspired twist on a classic using homemade mulled wine syrup, adding warm spices to the old fashioned that you already love.",
+        "ingredients": [
+          "bourbon",
+          "mulled wine simple syrup",
+          "dash chocolate bitters",
+          "orange peel garnish"
+        ],
+        "image": "/cup2.png"
+      },
+      {
+        "name": "What A Pear",
+        "description": "For the pear lover, this cocktail offers a balance of herbal complexity with autumn spices and a citrus finish.",
+        "ingredients": [
+          "bourbon",
+          "yellow chartreuse",
+          "spiced pear simple syrup",
+          "lemon juice"
+        ],
+        "image": "/cup1.png"
+      }
+    ]
+  },
+  {
+    "liquor": "Vodka",
+    "cocktails": [
+      {
+        "name": "Fall Embrace",
+        "description": "The fall embrace is perfect for those cool evenings, with warm flavours of chai, cinnamon, and nutmeg.",
+        "ingredients": [
+          "vodka",
+          "baileys",
+          "chai concentrate",
+          "vanilla simple syrup",
+          "top with nutmeg & cinnamon"
+        ],
+        "image": "/cup2.png"
+      },
+      {
+        "name": "Summer Heat",
+        "description": "This is a light and citrusy cocktail with a spicy kick that perfectly captures the essence",
+        "ingredients": [
+          "vodka",
+          "lillet blanc",
+          "lime juice",
+          "spicy serano syrup"
+        ],
+        "image": "/cup1.png"
+      }
+    ]
+  },
+  {
+    "liquor": "Brandy",
+    "cocktails": [
+      {
+        "name": "Don't know yet",
+        "description": "This exquisite cocktail is a blend of rich, fruity, and zesty flavors with a touch of aromatic spice. It’s a sophisticated and well-balanced libation that’s sure to captivate your palate.",
+        "ingredients": [
+          "brandy",
+          "luxardo cherry liqueur",
+          "cointreau",
+          "orgeat syrup",
+          "lemon juice",
+          "allspice bitters"
+        ],
+        "image": "/cup1.png"
+      }
+    ]
+  },
+  {
+    "liquor": "Gin",
+    "cocktails": [
+      {
+        "name": "Spring Garden",
+        "description": "This bright refreshing cocktail encapsulates the essence of spring. The herbal, floral notes transport you to a blooming garden.",
+        "ingredients": [
+          "gin",
+          "herbal liqueur",
+          "simple syrup",
+          "lemon",
+          "lavender bitters"
+        ],
+        "image": "/cup1.png"
+      },
+      {
+        "name": "Sweet Tooth",
+        "description": "A delightful indulgence for those with a sweet tooth. This cocktail offers a harmonious blend of flavors that will satisfy your cravings",
+        "ingredients": [
+          "gin",
+          "frangelico",
+          "lime juice",
+          "spicy serano syrup",
+          "egg white",
+          "chocolate bitters"
+        ],
+        "image": "/cup1.png"
+      },
+      {
+        "name": "Rose-Berry Fizz",
+        "description": "Is a lively and refreshing cocktail with a touch of herbal charm, an ideal choice for those who enjoy a fruity and effervescent experience.",
+        "ingredients": [
+          "gin",
+          "blueberry juice",
+          "simple syrup",
+          "rosemary smoked glass",
+          "soda",
+          "rosemary garnish"
+        ],
+        "image": "/cup2.png"
+      }
+    ]
+  }
+]
