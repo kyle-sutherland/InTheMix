@@ -1,10 +1,11 @@
 import Image from 'next/image'
-import ContactForm from '@components/ContactForm'
+import ContactForm from '@components/contact-form'
 import Carousel from '@components/carousel'
 import Link from 'next/link'
 import Landing from '@components/landing'
 import Layout from 'pages/layout'
 import { Fade } from 'react-awesome-reveal'
+import { allura } from './fonts.js'
 
 export default function Home () {
   const cocktailCarouselImages = require('data/cocktails-carousel.json')
@@ -93,10 +94,15 @@ export default function Home () {
               </div>
               <div className='flex flex-col'>
                 <div id='cocktails' className='container cocktails'>
-                  <h2>SIGNATURE COCKTAILS</h2>
+                  <h4 className={allura.className}>
+                    <Link href='/cocktails-page'>Signature Cocktails</Link>
+                  </h4>
                   {/* Cocktails-list */}
                   <Carousel images={cocktailCarouselImages} />
                 </div>
+                <h5 className={allura.className}>
+                  <Link href='/cocktails-page'>Full List {'>>'}</Link>
+                </h5>
               </div>
               <div id='contact' className='flex flex-col container'>
                 <h2>CONTACT US</h2>
