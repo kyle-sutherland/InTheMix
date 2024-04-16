@@ -26,7 +26,11 @@ export default function Layout ({ children }) {
         >
           <Navbar />
         </div>
-        <GoogleReCaptchaProvider>{children}</GoogleReCaptchaProvider>
+        <GoogleReCaptchaProvider
+          reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
+        >
+          {children}
+        </GoogleReCaptchaProvider>
         <Analytics />
       </main>
     </>
