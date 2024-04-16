@@ -2,11 +2,37 @@
   "forms": {
     "contactForm": {
       "name": "Contact Form",
-      "fields": {
-        "email": { "type": "email", "required": true },
-        "message": { "type": "text", "required": true }
+      "captcha": {
+        "type": "recaptcha"
       },
-      "actions": [{ "type": "email", "to": "inthemixcalgary@gmail.com" }]
+      "fields": {
+        "email": {
+          "type": "email",
+          "required": true
+        },
+        "date": {
+          "type": "datetime",
+          "required": true
+        },
+        "guests": {
+          "type": "numeric",
+          "required": true
+        },
+        "message": {
+          "type": "text",
+          "required": true
+        },
+        "phone": {
+          "type": "text",
+          "required": true
+        }
+      },
+      "actions": [
+        {
+          "type": "email",
+          "to": "inthemixcalgary@gmail.com"
+        }
+      ]
     }
   }
 }
