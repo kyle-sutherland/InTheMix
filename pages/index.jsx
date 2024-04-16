@@ -17,7 +17,7 @@ export default function Home () {
         </Fade>
         <div className='body-content '>
           <div className='flex flex-col mx-auto container xl:max-w-7xl'>
-            <Fade cascade duration={1500} damping={0.1} fraction={0.1}>
+            <Fade cascade duration={1200} damping={0.1} fraction={0.1}>
               <div id='about'>
                 <h2>ABOUT US</h2>
                 <div className='container'>
@@ -32,6 +32,7 @@ export default function Home () {
                           width: '100%',
                           height: 'auto'
                         }}
+                        alt=''
                       />
                     </div>
                     <div className='container oder-last text-center basis-1/2 p-3'>

@@ -18,7 +18,7 @@ export default function CocktailsPage () {
               alt='In The Mix teal logo'
             />
           </div>
-          <Fade cascade>
+          <Fade cascade damping={0.1} duration={1200} triggerOnce='true'>
             <div className='cocktails-h1 px-6'>
               <t className={allura.className}>Signature Cocktails</t>
             </div>
@@ -30,7 +30,13 @@ export default function CocktailsPage () {
                       {liquor.liquor} Cocktails
                     </t>
                   </div>
-                  <Fade cascade>
+                  <Fade
+                    cascade
+                    damping={0.2}
+                    fraction={0.2}
+                    duration={1200}
+                    triggerOnce='true'
+                  >
                     {liquor.cocktails.map((cocktail, i) => (
                       <div
                         obj={cocktail}
