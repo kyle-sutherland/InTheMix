@@ -2,7 +2,7 @@ import Layout from 'pages/layout'
 import { Fade } from 'react-awesome-reveal'
 import Image from 'next/image'
 import Link from 'next/link'
-import { allura, sofia, architects_daughter } from './fonts.js'
+import { allura, sofia, architects_daughter } from '../lib/fonts.js'
 
 export default function CocktailsPage () {
   const cocktails = require('data/signature-cocktails.json')

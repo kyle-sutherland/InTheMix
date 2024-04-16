@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Landing from '@components/landing'
 import Layout from 'pages/layout'
 import { Fade } from 'react-awesome-reveal'
-import { allura } from './fonts.js'
+import { allura } from '../lib/fonts.js'
 
 export default function Home () {
   const cocktailCarouselImages = require('data/cocktails-carousel.json')
