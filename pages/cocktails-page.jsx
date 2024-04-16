@@ -41,9 +41,9 @@ export default function CocktailsPage () {
                       <div
                         obj={cocktail}
                         key={i}
-                        className='grid grid-flow-row grid-cols-3'
+                        className='grid grid-flow-row sm:grid-cols-3'
                       >
-                        <div className='col-span-2'>
+                        <div className='sm:col-span-2'>
                           <br />
                           <div className='cocktails-name'>
                             <p className={sofia.className}>{cocktail.name}</p>
