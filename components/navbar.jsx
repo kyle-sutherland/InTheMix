@@ -23,7 +23,7 @@ export default function Navbar () {
               <div className='flex items-center justify-between md:block'>
                 <a href='#'>
                   <Image
-                    src='/In-The-Mix(teal).jpg'
+                    src='/In-The-Mix(teal).svg'
                     width={240}
                     height={64}
                     alt='navigate to home'

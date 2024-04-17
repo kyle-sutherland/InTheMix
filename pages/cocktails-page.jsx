@@ -12,7 +12,7 @@ export default function CocktailsPage () {
         <div className='flex flex-col mx-auto container'>
           <div className='container cocktails-banner'>
             <Image
-              src='/In-The-Mix(teal).jpg'
+              src='/In-The-Mix(teal).svg'
               height={1000}
               width={1400}
               alt='In The Mix teal logo'

@@ -1,4 +1,4 @@
-import { LandingButton } from '@components/buttons'
+import { LandingButton } from '/components/buttons'
 import Image from 'next/image'
 
 export default function Landing () {

@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Sidebar from '@components/sidebar'
-import Navbar from '@components/navbar'
+import Sidebar from '/components/sidebar'
+import Navbar from '/components/navbar'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
@@ -10,7 +10,7 @@ export default function Layout ({ children }) {
     <>
       <Head>
         <title>In The Mix Bartending</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/favicon.svg' />
       </Head>
       <main>
         <SpeedInsights />

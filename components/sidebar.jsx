@@ -6,7 +6,7 @@ function Sidebar () {
     <div>
       <div className='mx-auto pt-0 pr-0 pb-0 pl-0 mt-0 mr-0 mb-0 ml-0'>
         <Image
-          src='/In-The-Mix(teal).jpg'
+          src='/In-The-Mix(teal).svg'
           width={240}
           height={64}
           alt='navigate to home'
