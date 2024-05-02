@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ContactForm from "/components/ContactForm";
+import ContactForm from "/components/contact-form";
 import Carousel from "/components/carousel";
 import Link from "next/link";
 import Landing from "/components/landing";
