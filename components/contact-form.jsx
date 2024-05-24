@@ -18,16 +18,15 @@ export default function ContactForm() {
     startDate: new Date(),
     endDate: new Date().setMonth(11),
   });
-  const router = useRouter();
-  const confirmationScreenVisible =
-    router.query?.success && router.query.success === "true";
-  const formVisible = !confirmationScreenVisible;
+  const [formSubitted, setFormSubitted] = useState(false);
+
   const onSubmit = async (data) => {
     console.log(data);
     try {
       // Send form data to your API route
       const response = await axios.post("/api/contact", data);
       console.log("API response:", response.data);
+      setFormSubitted(true);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -39,7 +38,11 @@ export default function ContactForm() {
 
   const confirmationMessage = (
     <>
-      <p>Thanks for reaching out! Robyn will be in touch soon.</p>;
+      <div className="container grid grid-flow-dense auto-cols-auto grid-rows-3">
+        <div className="h-48">
+          <p>Thanks for reaching out! Robyn will be in touch soon.</p>
+        </div>
+      </div>
     </>
   );
 
@@ -207,5 +210,5 @@ export default function ContactForm() {
       </div>
     </form>
   );
-  return <>{formVisible ? form : confirmationMessage}</>;
+  return <>{formSubitted ? confirmationMessage : form}</>;
 }
