@@ -4,7 +4,8 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       // Process form data (e.g., send email)
-      const { name, email, message } = req.body;
+      const { name, email, message, subject, phone, guests, cocktails } =
+        req.body;
 
       // Create a transporter (SMTP setup)
       const transporter = nodemailer.createTransport({
@@ -19,12 +20,12 @@ export default async function handler(req, res) {
       const mailOptions = {
         from: process.env.WEBMASTER_EMAIL,
         to: process.env.RECIPIENT_EMAIL, // Specify the recipient's email address
-        subject: "New Contact Form Submission",
-        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        subject: { subject },
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nGuests: ${guests}\nCocktails: ${cocktails}\nMessage: ${message}`,
       };
 
       // Send email
-      await transporter.sendMail(mailOptions);
+      transporter.sendMail(mailOptions);
 
       // Respond with success message
       res.status(200).json({ message: "Form submitted successfully!" });

@@ -1,7 +1,6 @@
 // modules
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 import axios from "axios";
 // components
 import { ActionButton } from "/components/buttons";
@@ -151,14 +150,14 @@ export default function ContactForm() {
             </div>
             <div>
               <label
-                htmlFor="bool-cocktails"
+                htmlFor="cocktails"
                 className="text-sm font-medium leading-6"
               >
                 Will you be having Signature Cocktails?
               </label>
               <div className="items-center">
                 <input
-                  id="bool-cocktails"
+                  id="cocktails"
                   type="checkbox"
                   name="bool-cocktails"
                   className="flex-1 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-thistle-blossom-light"
