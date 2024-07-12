@@ -92,7 +92,7 @@ export default function Home() {
           <div className="flex flex-col mx-auto container xl:max-w-7xl">
             <Fade cascade duration={1200} damping={0.1} fraction={0.1}>
               <div id="about">
-                <h2>ABOUT US</h2>
+                <h2>About Us</h2>
                 <div className="container">
                   <div className="container grid md:grid-cols-2">
                     <div className="about-image order-first basis-1/2 py-3 ps-3">
@@ -163,18 +163,18 @@ export default function Home() {
               </div>
               <div id="cocktails" className="flex flex-col">
                 <div className="container cocktails">
-                  <h4 className={allura.className}>
+                  <h2>
                     <Link href="/cocktails-page">Signature Cocktails</Link>
-                  </h4>
+                  </h2>
                   {/* Cocktails-list */}
                   <Carousel images={cocktailCarouselImages} />
                 </div>
-                <h5 className={allura.className}>
+                <h2>
                   <Link href="/cocktails-page">Full List {">>"}</Link>
-                </h5>
+                </h2>
               </div>
               <div id="contact" className="flex flex-col container">
-                <h2>CONTACT US</h2>
+                <h2>Contact Us</h2>
                 {/* Contact */}
                 <div className="container grid md:grid-cols-2">
                   <div className="md:basis-1/2 p-3">
