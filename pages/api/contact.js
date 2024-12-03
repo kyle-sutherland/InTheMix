@@ -24,7 +24,8 @@ export default async function handler(req, res) {
           clientId: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
           refreshToken: process.env.REFRESH_TOKEN,
-          accessToken: (await process.env.ACCESS_TOKEN).token || "",
+          // some typescript magic. Investigate
+          // accessToken: (await process.env.ACCESS_TOKEN).token || "",
         },
       });
 
