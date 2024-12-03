@@ -1,7 +1,7 @@
 import { LandingButton } from '/components/buttons'
 import Image from 'next/image'
 
-export default function Landing () {
+export default function Landing() {
   return (
     <>
       <div className='landing bg-slate-300 opacity-75 mx-auto'>
@@ -16,10 +16,10 @@ export default function Landing () {
           <div className='landingTitle text-6xl p-3'>
             <p>Pride in the Pour</p>
           </div>
-          <div className='text-lg p-3 mb-4 pt-0'>
-            <p>Years of Experience, Quality Concoctions, Crafted Cocktails</p>
+          <div className='text-xl p-3 mb-4 pt-0'>
+            <p>Years of Experience, Quality Service, Crafted Cocktails</p>
           </div>
-          <LandingButton text='CONTACT US' link='/#contact' />
+          <LandingButton text='Get In Touch' link='/#contact' />
         </div>
       </div>
     </>
