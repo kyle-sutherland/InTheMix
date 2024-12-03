@@ -9,10 +9,14 @@ export default async function handler(req, res) {
 
       // Create a transporter (SMTP setup)
       const transporter = nodemailer.createTransport({
-        service: "Gmail", // Use Gmail
+        service: "gmail", // Use Gmail
         auth: {
-          user: process.env.WEBMASTER_EMAIL, // Your Gmail address
-          pass: process.env.WEBMASTER_APP_PASS, // Your Gmail password
+          type: "OAuth2",
+          user: process.env.WEBMASTER_EMAIL,
+          clientId: process.env.CLIENT_ID,
+          clientSecret: process.env.CLIENT_SECRET,
+          refreshToken: process.env.REFRESH_TOKEN,
+          accessToken: (await process.env.ACCESS_TOKEN).token || "",
         },
       });
 
