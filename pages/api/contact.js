@@ -27,6 +27,7 @@ export default async function handler(req, res) {
           // some typescript magic. Investigate
           // accessToken: (await process.env.ACCESS_TOKEN).token || "",
         },
+        accessToken: process.env.ACCESS_TOKEN,
       });
 
       // Compose email
