@@ -23,7 +23,7 @@ export default function ContactForm() {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      // Send form data to your API route
+      // Send form data to API route
       const response = await axios.post("/api/contact", data);
       console.log("API response:", response.data);
       setFormSubitted(true);
@@ -40,7 +40,7 @@ export default function ContactForm() {
     <>
       <div className="container grid grid-flow-dense auto-cols-auto grid-rows-3">
         <div className="h-48">
-          <p>Thanks for reaching out! Robyn will be in touch soon.</p>
+          <p>Thanks for reaching out! We will be in touch soon.</p>
         </div>
       </div>
     </>

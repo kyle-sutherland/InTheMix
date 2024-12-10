@@ -5,12 +5,14 @@ const OAuth2 = google.auth.OAuth2;
 const OAuth2_client = new OAuth2(
   process.env.CLIENT_ID,
   process.env.CLIENT_SECRET,
+  "https://developers.google.com/oauthplayground",
 );
 OAuth2_client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
+      const ACCESS_TOKEN = OAuth2_client.getAccessToken();
       // Process form data (e.g., send email)
       const { name, email, message, subject, phone, guests, cocktails } =
         req.body;
@@ -24,22 +26,20 @@ export default async function handler(req, res) {
           clientId: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
           refreshToken: process.env.REFRESH_TOKEN,
-          // some typescript magic. Investigate
-          // accessToken: (await process.env.ACCESS_TOKEN).token || "",
+          accessToken: (await process.env.ACCESS_TOKEN).token || "",
         },
-        accessToken: process.env.ACCESS_TOKEN,
       });
 
       // Compose email
       const mailOptions = {
         from: process.env.WEBMASTER_EMAIL,
         to: process.env.RECIPIENT_EMAIL, // Specify the recipient's email address
-        subject: { subject },
+        subject: subject,
         text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nGuests: ${guests}\nCocktails: ${cocktails}\nMessage: ${message}`,
       };
 
       // Send email
-      transporter.sendMail(mailOptions);
+      await transporter.sendMail(mailOptions);
 
       // Respond with success message
       res.status(200).json({ message: "Form submitted successfully!" });
