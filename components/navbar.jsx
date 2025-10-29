@@ -9,11 +9,11 @@ const navigation = [
   // { name: "Resources", href: "/resources", current: null },
 ]
 
-function classNames (...classes) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar () {
+export default function Navbar() {
   return (
     <Disclosure as='nav' className='navigation z-20 w-full shadow sticky top-0'>
       {({ open }) => (
@@ -47,7 +47,7 @@ export default function Navbar () {
                             clipRule='evenodd'
                           />
                         </svg>
-                        )
+                      )
                       : (
                         <svg
                           xmlns='http://www.w3.org/2000/svg'
@@ -63,7 +63,7 @@ export default function Navbar () {
                             d='M4 6h16M4 12h16M4 18h16'
                           />
                         </svg>
-                        )}
+                      )}
                   </Disclosure.Button>
                 </div>
               </div>

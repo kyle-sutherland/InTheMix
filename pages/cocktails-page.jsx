@@ -1,5 +1,4 @@
 import Layout from "/pages/layout";
-import { Fade } from "react-awesome-reveal";
 import Image from "next/image";
 import Link from "next/link";
 import allura from "../lib/fonts.js";
@@ -18,7 +17,6 @@ export default function CocktailsPage() {
               alt="In The Mix teal logo"
             />
           </div>
-          <Fade cascade damping={0.1} duration={1200} triggerOnce>
             <div className="cocktails-h1 px-6">
               <t>Signature Cocktails</t>
             </div>
@@ -28,13 +26,6 @@ export default function CocktailsPage() {
                   <div className="cocktails-h2">
                     <t>{liquor.liquor} Cocktails</t>
                   </div>
-                  <Fade
-                    cascade
-                    damping={0.2}
-                    fraction={0.2}
-                    duration={1200}
-                    triggerOnce
-                  >
                     {liquor.cocktails.map((cocktail, i) => (
                       <div
                         obj={cocktail}
@@ -63,11 +54,9 @@ export default function CocktailsPage() {
                         </div>
                       </div>
                     ))}
-                  </Fade>
                 </div>
               ))}
             </div>
-          </Fade>
           <div className="cocktails-h2 self-center bottom-0 pt-8">
             <t>
               <Link href="/#cocktails">{"<<"} Back</Link>

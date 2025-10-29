@@ -13,7 +13,6 @@ import drink5Img from "/public/drink5.jpg";
 import groupDrinksImg from "/public/group-drinks.jpg";
 import firsideImg from "/public/fireside.jpg";
 import cocktailMenuImg from "/public/cocktail-menu.jpg";
-import { Fade } from "react-awesome-reveal";
 import { allura } from "../lib/fonts.js";
 
 export default function Home() {
@@ -85,118 +84,114 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <Fade triggerOnce="true">
-          <Landing />
-        </Fade>
+        <Landing />
         <div className="body-content ">
           <div className="flex flex-col mx-auto container xl:max-w-7xl">
-            <Fade cascade duration={1200} damping={0.1} fraction={0.1}>
-              <div id="about">
-                <h2>About Us</h2>
-                <div className="container">
-                  <div className="container grid md:grid-cols-2">
-                    <div className="about-image order-first basis-1/2 py-3 ps-3">
-                      <Image
-                        src={cocktailMenuImg}
-                        sizes="100vw"
-                        width={500}
-                        height={300}
-                        style={{
-                          width: "100%",
-                          height: "auto",
-                        }}
-                        alt=""
-                      />
-                    </div>
-                    <div className="container oder-last text-center basis-1/2 p-3">
-                      <h3>Cocktails with Experience</h3>
-                      <p>
-                        In The Mix was founded by Robyn Sutherland. She began
-                        her journey in the service industry in 2008 at a small
-                        local breakfast restaurant in Toronto, Daddyo&#39;s. In
-                        2021, she decided to transition her skills from
-                        restaurants to events. Robyn would like to bring her
-                        passion for mixology to your wedding, your home, your
-                        backyard, or wherever you are or whatever event
-                        you&#39;re hosting. In The Mix will be there to ensure
-                        it runs smoothly.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="container grid md:grid-cols-2">
-                    <div className="container md:order-first text-center order-last basis-1/2 p-3">
-                      <h3>Bar Services for Your Event</h3>
-                      <p>In The Mix offers a range of services including:</p>
-                      <li>Hosted bar service</li>
-                      <li>Cash, ticket, or open bar service</li>
-                      <li>Specially Crafted Cocktail menu</li>
-                      <li>Bar setup and clean up</li>
-                      <p>
-                        Please contact us for further details about your event
-                        so we may tailor our services accordingly.
-                      </p>
-                    </div>
-                    <div className="about-image md:order-last order-first basis-1/2 p-3">
-                      <Image
-                        src={groupDrinksImg}
-                        height={300}
-                        width={500}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container grid md:grid-cols-2">
-                    <div className="about-image order-first basis-1/2 p-3">
-                      <Image src={firsideImg} height={300} width={500} alt="" />
-                    </div>
-                    <div className="container order-last basis-1/2 text-center p-3">
-                      <h3>Event Extras and Add-ons</h3>
-                      <p>
-                        We provide all of the non-alcoholic beverages, mixes,
-                        glassware, curated seasonal non-alcoholic/alcoholic
-                        cocktail menu, and bar for an additional charge. Please
-                        contact us for details.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="cocktails" className="flex flex-col">
-                <div className="container cocktails">
-                  <h2>
-                    <Link href="/cocktails-page">Signature Cocktails</Link>
-                  </h2>
-                  {/* Cocktails-list */}
-                  <Carousel images={cocktailCarouselImages} />
-                </div>
-                <h2>
-                  <Link href="/cocktails-page">Full List {">>"}</Link>
-                </h2>
-              </div>
-              <div id="contact" className="flex flex-col container">
-                <h2>Contact Us</h2>
-                {/* Contact */}
+            <div id="about">
+              <h2>About Us</h2>
+              <div className="container">
                 <div className="container grid md:grid-cols-2">
-                  <div className="md:basis-1/2 p-3">
-                    <p className="description">
-                      Send me a message about your upcoming event. Do you need
-                      help with permits? Can we design a customized menu for
-                      you? Let me know, and I will get back to you soon.
-                    </p>
-                    <h1>In The Mix</h1>
+                  <div className="about-image order-first basis-1/2 py-3 ps-3">
+                    <Image
+                      src={cocktailMenuImg}
+                      sizes="100vw"
+                      width={500}
+                      height={300}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                      }}
+                      alt=""
+                    />
+                  </div>
+                  <div className="container oder-last text-center basis-1/2 p-3">
+                    <h3>Cocktails with Experience</h3>
                     <p>
-                      <Link href="#contact">587-893-2204</Link>
-                    </p>
-                    <p>
-                      <Link href="#contact">inthemixcalgary@gmail.com</Link>
+                      In The Mix was founded by Robyn Sutherland. She began
+                      her journey in the service industry in 2008 at a small
+                      local breakfast restaurant in Toronto, Daddyo&#39;s. In
+                      2021, she decided to transition her skills from
+                      restaurants to events. Robyn would like to bring her
+                      passion for mixology to your wedding, your home, your
+                      backyard, or wherever you are or whatever event
+                      you&#39;re hosting. In The Mix will be there to ensure
+                      it runs smoothly.
                     </p>
                   </div>
-                  <div className="md:order-first md:basis-1/2 p-3">
-                    <ContactForm />
+                </div>
+                <div className="container grid md:grid-cols-2">
+                  <div className="container md:order-first text-center order-last basis-1/2 p-3">
+                    <h3>Bar Services for Your Event</h3>
+                    <p>In The Mix offers a range of services including:</p>
+                    <p>Hosted bar service</p>
+                    <p>Cash, ticket, or open bar service</p>
+                    <p>Specially Crafted Cocktail menu</p>
+                    <p>Bar setup and clean up</p>
+                    <p>
+                      Please contact us for further details about your event
+                      so we may tailor our services accordingly.
+                    </p>
+                  </div>
+                  <div className="about-image md:order-last order-first basis-1/2 p-3">
+                    <Image
+                      src={groupDrinksImg}
+                      height={300}
+                      width={500}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="container grid md:grid-cols-2">
+                  <div className="about-image order-first basis-1/2 p-3">
+                    <Image src={firsideImg} height={300} width={500} alt="" />
+                  </div>
+                  <div className="container order-last basis-1/2 text-center p-3">
+                    <h3>Event Extras and Add-ons</h3>
+                    <p>
+                      We provide all of the non-alcoholic beverages, mixes,
+                      glassware, curated seasonal non-alcoholic/alcoholic
+                      cocktail menu, and bar for an additional charge. Please
+                      contact us for details.
+                    </p>
                   </div>
                 </div>
               </div>
-            </Fade>
+            </div>
+            <div id="cocktails" className="flex flex-col">
+              <div className="container cocktails">
+                <h2>
+                  <Link href="/cocktails-page">Signature Cocktails</Link>
+                </h2>
+                {/* Cocktails-list */}
+                <Carousel images={cocktailCarouselImages} />
+              </div>
+              <h2>
+                <Link href="/cocktails-page">Full List {">>"}</Link>
+              </h2>
+            </div>
+            <div id="contact" className="flex flex-col container">
+              <h2>Contact Us</h2>
+              {/* Contact */}
+              <div className="container grid md:grid-cols-2">
+                <div className="md:basis-1/2 p-3">
+                  <p className="description">
+                    Send me a message about your upcoming event. Do you need
+                    help with permits? Can we design a customized menu for
+                    you? Let me know, and I will get back to you soon.
+                  </p>
+                  <h1>In The Mix</h1>
+                  <p>
+                    <Link href="#contact">587-893-2204</Link>
+                  </p>
+                  <p>
+                    <Link href="#contact">inthemixcalgary@gmail.com</Link>
+                  </p>
+                </div>
+                <div className="md:order-first md:basis-1/2 p-3">
+                  <ContactForm />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Layout>
