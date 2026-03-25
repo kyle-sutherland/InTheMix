@@ -1,118 +1,99 @@
-import { Disclosure } from '@headlessui/react'
-import Image from 'next/image'
+"use client";
 
-const navigation = [
-  // { name: "Home", href: "/", current: null },
-  { name: 'About Us', href: '/#about', current: null },
-  { name: 'Signature Cocktails', href: '/#cocktails', current: null },
-  { name: 'Contact', href: '/#contact', current: null }
-  // { name: "Resources", href: "/resources", current: null },
-]
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+const navLinks = [
+  { label: "ABOUT US", href: "/about" },
+  { label: "EVENT BARTENDING", href: "/event-bartending" },
+  { label: "CONSULTING", href: "/consulting" },
+  { label: "BLOG", href: "/blog" },
+  { label: "CONTACT", href: "/contact" },
+];
 
 export default function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
-    <Disclosure as='nav' className='navigation z-20 w-full shadow sticky top-0'>
-      {({ open }) => (
-        <>
-          <div className='justify-between pr-4 lg:pr-0 mx-auto lg:max-w-7xl md:items-center md:flex md:pr-8'>
-            <div>
-              <div className='flex items-center justify-between md:block'>
-                <a href='#'>
-                  <Image
-                    src='/In-The-Mix(teal).svg'
-                    width={240}
-                    height={64}
-                    alt='navigate to home'
-                    aria-label='Navigate to homepage'
-                    className='h-24 object-cover overflow-hidden'
-                  />
-                </a>
-                <div className='md:hidden'>
-                  <Disclosure.Button className='p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border'>
-                    {open
-                      ? (
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          className='w-6 h-6 text-charcoal'
-                          viewBox='0 0 20 20'
-                          fill='currentColor'
-                        >
-                          <path
-                            fillRule='evenodd'
-                            d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                            clipRule='evenodd'
-                          />
-                        </svg>
-                      )
-                      : (
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          className='w-6 h-6 text-charcoal'
-                          fill='none'
-                          viewBox='0 0 24 24'
-                          stroke='currentColor'
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M4 6h16M4 12h16M4 18h16'
-                          />
-                        </svg>
-                      )}
-                  </Disclosure.Button>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-end'>
-              <div className='hidden md:ml-6 md:block'>
-                <div className='items-center justify-center px-4 space-y-8 md:flex md:space-x-3 md:space-y-0'>
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? 'text-gray-900 bg-gray-200'
-                          : 'text-charcoal bg-inherit hover:bg-gray-200 hover:text-gray-900',
-                        'rounded-md px-3 py-2'
-                      )}
-                      aria-label={item.name}
-                      aria-current={item.current ? 'page' : undefined}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <Disclosure.Panel className='md:hidden'>
-            <div className='px-2 pb-3 pt-2'>
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as='a'
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'text-gray-900 bg-gray-300'
-                      : 'text-charcoal bg-inherit hover:bg-gray-200 hover:text-gray-900',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
+    <header style={{ backgroundColor: "var(--color-dark)", position: "sticky", top: 0, zIndex: 50 }}>
+      <div
+        style={{
+          maxWidth: "1080px",
+          margin: "0 auto",
+          padding: "0 1.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: "5rem",
+        }}
+      >
+        <Link href="/" aria-label="In The Mix home">
+          <Image
+            src="/In-The-Mix(teal).svg"
+            width={160}
+            height={48}
+            alt="In The Mix Bartending"
+            style={{ objectFit: "contain" }}
+            priority
+          />
+        </Link>
+
+        {/* Desktop nav */}
+        <nav style={{ display: "flex", gap: "2rem", alignItems: "center" }} className="nav-desktop">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="nav-link">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+          className="nav-hamburger"
+          style={{ background: "none", border: "none", cursor: "pointer", padding: "0.5rem" }}
+        >
+          <span style={{ color: "#e0d8cf", fontSize: "1.5rem" }}>
+            {mobileOpen ? "✕" : "☰"}
+          </span>
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <nav
+          style={{
+            backgroundColor: "#111",
+            padding: "1rem 1.5rem 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+          }}
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="nav-link"
+              onClick={() => setMobileOpen(false)}
+              style={{ fontSize: "1rem" }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       )}
-    </Disclosure>
-  )
+
+      <style>{`
+        .nav-desktop { display: flex; }
+        .nav-hamburger { display: none; }
+        @media (max-width: 768px) {
+          .nav-desktop { display: none !important; }
+          .nav-hamburger { display: block !important; }
+        }
+      `}</style>
+    </header>
+  );
 }

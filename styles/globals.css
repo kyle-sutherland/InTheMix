@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Allura&display=swap");
+
+@theme {
+  --color-cream: #F5F0EA;
+  --color-text: #5F5F5F;
+  --color-accent: #C17F4A;
+  --color-hover: #007194;
+  --color-dark: #1a1a1a;
+  --color-dark-footer: #1f1f1f;
+  --font-sans: "Inter", sans-serif;
+  --font-script: "Allura", cursive;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  color: var(--color-text);
+  background-color: var(--color-cream);
+}
+
+/* Script headings (amber, Allura font) */
+.script-heading {
+  font-family: var(--font-script);
+  color: var(--color-accent);
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+/* Section heading with flanking dividers */
+.section-heading-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+.section-heading-wrapper hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #d4b896;
+}
+
+/* Outlined amber button */
+.btn-outline {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border: 1.5px solid var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.02em;
+}
+.btn-outline:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Circular image */
+.img-circle {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Service card (consulting) */
+.service-card {
+  background: var(--color-cream);
+  border: 1px solid #e0d8cf;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Service item row (chevron list) */
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0d8cf;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+.service-item:last-child {
+  border-bottom: none;
+}
+.service-item-chevron {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+}
+
+/* Pricing card */
+.pricing-card {
+  background: var(--color-cream);
+  border: 1px solid #e0d8cf;
+  border-radius: 0.5rem;
+  padding: 2rem 1.5rem;
+  flex: 1;
+}
+
+/* How it works step card */
+.step-card {
+  background: var(--color-cream);
+  border: 1px solid #e0d8cf;
+  border-radius: 0.5rem;
+  padding: 2rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.step-number {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 1.5px solid #d4b896;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  align-self: center;
+}
+
+/* Form inputs */
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #C17F4A44;
+  background: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  border-color: var(--color-accent);
+}
+.form-input::placeholder {
+  color: #C17F4A99;
+  font-size: 0.85rem;
+}
+textarea.form-input {
+  resize: vertical;
+  min-height: 8rem;
+}
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--color-text);
+}
+
+/* Nav link hover */
+a.nav-link {
+  color: #e0d8cf;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  transition: color 0.15s;
+}
+a.nav-link:hover {
+  color: var(--color-accent);
+}
