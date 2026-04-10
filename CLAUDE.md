@@ -15,7 +15,7 @@ No test suite is configured.
 
 ## Architecture
 
-**InTheMix** is a Next.js 16 site for a professional bartending and hospitality consulting service, using the **App Router**.
+**InTheMix** is a Next.js 16 / React 19 site for a professional bartending and hospitality consulting service, using the **App Router**.
 
 ### Routing
 
@@ -47,8 +47,9 @@ app/
 
 ### Shared Components
 
-- `components/button.jsx` — `OutlineButton` (amber outlined, href or onClick)
+- `components/buttons.jsx` — `LandingButton` (white outlined, used on hero sections) and `ActionButton` (dark filled, used in forms)
 - `components/section-heading.jsx` — Allura script heading flanked by `<hr>` dividers
+- `components/contact-form.jsx` — legacy general contact form with date picker (React Hook Form + Axios)
 - `components/forms/event-form.jsx` — event bartending inquiry form (React Hook Form + Axios)
 - `components/forms/consulting-form.jsx` — consulting inquiry form
 

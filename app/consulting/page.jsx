@@ -68,8 +68,8 @@ export default function ConsultingPage() {
           overflow: "hidden",
         }}
       >
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ color: "#fff", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, margin: "0 0 0.75rem", maxWidth: "700px" }}>
+        <div style={{ position: "relative", zIndex: 2, textAlign: "center", width: "100%" }}>
+          <h1 style={{ color: "#fff", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, margin: "0 auto 0.75rem", maxWidth: "700px" }}>
             Thoughtful Hospitality, Built for Real Service
           </h1>
           <p style={{ fontFamily: "var(--font-script)", color: "var(--color-hover)", fontSize: "2rem", margin: "0 0 2rem" }}>

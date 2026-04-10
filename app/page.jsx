@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import SectionHeading from "../components/section-heading";
 import { OutlineButton } from "../components/button";
 import EventForm from "../components/forms/event-form";
@@ -19,7 +18,6 @@ export default function HomePage() {
         style={{
           position: "relative",
           minHeight: "100vh",
-          backgroundColor: "#111",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -29,26 +27,18 @@ export default function HomePage() {
           overflow: "hidden",
         }}
       >
-        <div style={{ position: "relative", zIndex: 2 }}>
-          {/* Play icon placeholder */}
-          <div
-            style={{
-              width: "3.5rem",
-              height: "3.5rem",
-              borderRadius: "50%",
-              border: "2px solid rgba(255,255,255,0.6)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto 1.5rem",
-              cursor: "pointer",
-            }}
-          >
-            <span style={{ color: "rgba(255,255,255,0.8)", fontSize: "1.25rem", marginLeft: "3px" }}>▶</span>
-          </div>
+        <Image
+          src="/main-animation-avif.avif"
+          fill
+          alt=""
+          priority
+          unoptimized
+          style={{ objectFit: "cover", zIndex: 0 }}
+        />
+<div style={{ position: "relative", zIndex: 2 }}>
           <h1
             style={{
-              color: "rgba(255,255,255,0.85)",
+              color: "rgba(255,255,255,0.9)",
               fontSize: "clamp(2.5rem, 6vw, 4rem)",
               fontWeight: 700,
               margin: "0 0 1rem",
@@ -57,10 +47,10 @@ export default function HomePage() {
           >
             Pride in the Pour
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto 2.5rem" }}>
+          <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto 2.5rem" }}>
             Crafted cocktails, thoughtful hospitality, and systems that make great service possible.
           </p>
-          <OutlineButton href="/contact">Contact Us</OutlineButton>
+          <OutlineButton href="/contact" variant="light">Contact Us</OutlineButton>
         </div>
       </section>
 

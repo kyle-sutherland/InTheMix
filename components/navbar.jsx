@@ -16,23 +16,23 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header style={{ backgroundColor: "var(--color-dark)", position: "sticky", top: 0, zIndex: 50 }}>
+    <header style={{ backgroundColor: "#1a1a1a", position: "sticky", top: 0, zIndex: 50 }}>
       <div
         style={{
-          maxWidth: "1080px",
-          margin: "0 auto",
-          padding: "0 1.5rem",
           display: "flex",
+          flexDirection: "row",
           alignItems: "center",
-          justifyContent: "space-between",
-          height: "5rem",
+          justifyContent: "center",
+          gap: "3rem",
+          padding: "0 1.5rem",
+          height: "10rem",
         }}
       >
         <Link href="/" aria-label="In The Mix home">
           <Image
             src="/In-The-Mix(teal).svg"
-            width={160}
-            height={48}
+            width={620}
+            height={186}
             alt="In The Mix Bartending"
             style={{ objectFit: "contain" }}
             priority
@@ -40,7 +40,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav style={{ display: "flex", gap: "2rem", alignItems: "center" }} className="nav-desktop">
+        <nav style={{ display: "flex", gap: "1.75rem", alignItems: "center" }} className="nav-desktop">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className="nav-link">
               {link.label}

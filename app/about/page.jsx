@@ -22,7 +22,7 @@ export default function AboutPage() {
           overflow: "hidden",
         }}
       >
-        <div style={{ position: "relative", zIndex: 2 }}>
+        <div style={{ position: "relative", zIndex: 2, textAlign: "center", width: "100%" }}>
           <h1 style={{ color: "#fff", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, margin: "0 0 0.75rem" }}>
             Built on Experience, Designed for Real Service
           </h1>

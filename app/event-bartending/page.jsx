@@ -90,8 +90,8 @@ export default function EventBartendingPage() {
           backgroundColor: "#1a1a1a",
         }}
       >
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ color: "#fff", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, margin: "0 0 1rem", maxWidth: "700px" }}>
+        <div style={{ position: "relative", zIndex: 2, textAlign: "center", width: "100%" }}>
+          <h1 style={{ color: "#fff", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, margin: "0 auto 1rem", maxWidth: "700px" }}>
             Thoughtful Cocktails. Seamless Service. Memorable Events.
           </h1>
           <p
