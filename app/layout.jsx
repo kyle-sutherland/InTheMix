@@ -5,7 +5,6 @@ import RecaptchaProvider from "../components/recaptcha-provider";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import "../styles/globals.css";
-import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
