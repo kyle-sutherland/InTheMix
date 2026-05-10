@@ -1,10 +1,14 @@
-export default function SectionHeading({ children, style = {} }) {
+import React from "react";
+
+/**
+ * Section heading with flanking hairlines and Allura script label.
+ * <SectionHeading>What we do</SectionHeading>
+ */
+export default function SectionHeading({ children, maxWidth = "560px", style = {} }) {
   return (
-    <div className="section-heading-wrapper" style={{ margin: "0 auto", ...style }}>
+    <div className="section-heading" style={{ maxWidth, ...style }}>
       <hr />
-      <span className="script-heading" style={{ whiteSpace: "nowrap" }}>
-        {children}
-      </span>
+      <span className="label">{children}</span>
       <hr />
     </div>
   );

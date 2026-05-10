@@ -1,164 +1,141 @@
 import Image from "next/image";
 import SectionHeading from "../../components/section-heading";
-import { OutlineButton } from "../../components/button";
+import { Button } from "../../components/button";
 import ConsultingForm from "../../components/forms/consulting-form";
 
-const container = { maxWidth: "1080px", margin: "0 auto", padding: "0 1.5rem" };
+const container = { maxWidth: "1180px", margin: "0 auto", padding: "0 2rem" };
 
 const consultingPackages = [
   {
+    title: "Beverage Program Development",
     badge: "Core Specialty",
-    title: "BEVERAGE PROGRAM DEVELOPMENT",
-    items: [
-      { label: "Cocktail & mocktail menu development", desc: "Custom cocktail and mocktail menus built around your concept, space, and target demographic. Every drink is developed with both creativity and real service in mind — designed to be consistent, efficient to execute, and aligned with your overall program." },
-      { label: "Menu engineering & pricing strategy", desc: "Menu structuring and pricing built to improve profitability and guide guest decision-making. From how drinks are placed to how they're priced, everything is designed to feel clear, intentional, and make sense for your business." },
-      { label: "Costed specifications", desc: "Clear cocktail specs with built-in costing to support consistency and profitability. Designed to be easy to execute while keeping costs in line with your concept and target demographic." },
-      { label: "Batch systems & prep structure", desc: "Batching and prep systems built to make service smoother and more manageable. Focused on keeping things consistent, efficient, and easy to execute behind the bar." },
-    ],
-    img: "/drink1.jpg",
-  },
-  {
-    title: "CULINARY PROGRAM DEVELOPMENT",
-    items: [
-      { label: "Food & beverage alignment", desc: "Food and beverage programs developed to work together and support the overall concept. Focused on creating a menu that feels cohesive, intentional, and consistent with the experience you want to create." },
-      { label: "Kitchen workflow design", desc: "Kitchen workflows built to make service run more smoothly. Focused on how the space functions, helping teams work more efficiently and keeping things consistent during service." },
-      { label: "Food costing & margin review", desc: "Food costing and margin review to make sure your pricing makes sense for your concept and target demographic. Focused on improving profitability while keeping the menu balanced and sustainable." },
-      { label: "Pairing strategy & concept cohesion", desc: "Pairing and menu development designed to bring everything together and support the overall concept. Focused on creating a cohesive and intentional experience where food and beverage feel connected." },
-    ],
     img: "/drink2.jpg",
+    imgFirst: false,
+    items: ["Cocktail & mocktail menu development", "Menu engineering & pricing strategy", "Costed specifications", "Batch systems & prep structure"],
   },
   {
-    title: "OPERATIONS & SERVICE INFRASTRUCTURE",
-    items: [
-      { label: "Bar & kitchen workflow design", desc: "Bar and/or kitchen workflow designs built to ensure service runs smoothly and efficiently. Focused on improving communication, consistency, and how each area functions day-to-day." },
-      { label: "Production forecasting", desc: "Production forecasting to help you better plan prep, ordering, and volume. Focused on reducing waste, improving efficiency, and making service easier to execute." },
-      { label: "Standard operating procedures (SOPs)", desc: "Standard operating procedures built to give your team clear direction and structure. Focused on making training easier, improving communication, and keeping everyone on the same page." },
-      { label: "Training documentation & implementation", desc: "Training documentation and implementation built to support your team day-to-day. Focused on making expectations clear, improving onboarding, and helping systems carry through into service." },
-    ],
-    img: "/drink3.jpg",
-  },
-  {
-    title: "FULL CONCEPT DEVELOPMENT",
-    items: [
-      { label: "Concept & brand alignment", desc: "Concept and brand alignment to make sure everything is working toward the same vision. Focused on building a concept that feels intentional, cohesive, and makes sense for the experience you want to create." },
-      { label: "Integrated menu development (food & beverage)", desc: "Food and beverage menus developed together to work as one cohesive program. Focused on creating a menu that feels balanced, intentional, and aligned with the overall concept." },
-      { label: "Operational system design", desc: "Operational systems built to support how things run day-to-day. Focused on creating structure behind the scenes so service feels smoother and easier to execute." },
-      { label: "Cost & margin strategy", desc: "Cost and margin strategy designed to ensure pricing supports both profitability and sustainability. Focused on making sure your numbers make sense while maintaining the experience you want to deliver." },
-      { label: "Pre-launch implementation support", desc: "Launch and implementation support to help bring everything together. Focused on making sure everything is set up properly and your team feels confident heading into service." },
-    ],
+    title: "Culinary Program Development",
     img: "/drink1.jpg",
+    imgFirst: false,
+    items: ["Food & beverage alignment", "Kitchen workflow design", "Food costing & margin review", "Pairing strategy & concept cohesion"],
+  },
+  {
+    title: "Operations & Service Infrastructure",
+    img: "/drink3.jpg",
+    imgFirst: true,
+    items: ["Bar & kitchen workflow design", "Production forecasting", "Standard operating procedures (SOPs)", "Training documentation & implementation"],
+  },
+  {
+    title: "Full Concept Development",
+    img: "/drink2.jpg",
+    imgFirst: false,
+    items: ["Concept & brand alignment", "Integrated menu development (food & beverage)", "Operational system design", "Cost & margin strategy", "Pre-launch implementation support"],
   },
 ];
 
 export default function ConsultingPage() {
   return (
     <>
-      {/* Hero */}
-      <section
-        style={{
-          position: "relative",
-          minHeight: "60vh",
-          backgroundColor: "#1a1a1a",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "5rem 1.5rem",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ position: "relative", zIndex: 2, textAlign: "center", width: "100%" }}>
-          <h1 style={{ color: "#fff", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, margin: "0 auto 0.75rem", maxWidth: "700px" }}>
-            Thoughtful Hospitality, Built for Real Service
-          </h1>
-          <p style={{ fontFamily: "var(--font-script)", color: "var(--color-hover)", fontSize: "2rem", margin: "0 0 2rem" }}>
-            Consulting
-          </p>
-          <OutlineButton href="/contact">Request a Quote</OutlineButton>
+      {/* HERO */}
+      <section style={{ padding: 0, background: "var(--color-ink)", color: "#f4eee5", overflow: "hidden", position: "relative" }}>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "78vh" }}>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", padding: "4rem" }}>
+            <p style={{ fontSize: "0.72rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#a89a86", display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}>
+              <span style={{ width: 32, height: 1, background: "var(--color-accent)" }} />
+              Service Two — Hospitality Consulting
+            </p>
+            <h1 className="h-display" style={{ color: "#f4eee5", fontSize: "clamp(2.4rem, 4.2vw, 4.2rem)", fontWeight: 300 }}>
+              Thoughtful hospitality, <em style={{ fontStyle: "italic", color: "var(--color-accent)", fontWeight: 400 }}>built</em> for real service.
+            </h1>
+            <p className="h-script" style={{ color: "var(--color-hover-soft)", fontSize: "2rem", marginTop: "1.5rem" }}>Consulting</p>
+            <p style={{ maxWidth: 460, color: "#c4b9a7", lineHeight: 1.7, marginTop: "1.75rem" }}>
+              Beverage programs, menu development, and operational systems designed to help hospitality concepts run smoothly and serve better.
+            </p>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <Button href="#contact" variant="light">Request a quote</Button>
+              <Button href="#packages" style={{ borderColor: "#3a2e22", color: "#c4b9a7" }}>View packages</Button>
+            </div>
+          </div>
+          <div style={{ position: "relative", background: "#0d0a07", minHeight: "60vh" }}>
+            <Image src="/drink1.jpg" alt="" fill style={{ objectFit: "cover" }} />
+          </div>
         </div>
       </section>
 
-      {/* Intro */}
-      <section style={{ backgroundColor: "var(--color-cream)", padding: "5rem 1.5rem" }}>
-        <div style={{ ...container, maxWidth: "720px" }}>
-          <p style={{ textAlign: "center", lineHeight: 1.8, marginBottom: "1rem" }}>
-            Behind every great hospitality experience is thoughtful structure. In The Mix provides consulting for beverage programs, menus, and operational systems designed to support both creativity and smooth execution.
+      {/* INTRO */}
+      <section style={{ background: "var(--color-cream)", padding: "6rem 2rem 4rem" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+          <p className="h-eyebrow" style={{ marginBottom: "1.25rem" }}>The philosophy</p>
+          <p className="h-serif" style={{ fontSize: "clamp(1.4rem, 2.4vw, 1.9rem)", color: "var(--color-ink)", marginBottom: "1.5rem", lineHeight: 1.4 }}>
+            Behind every great hospitality experience is thoughtful structure.
           </p>
-          <p style={{ textAlign: "center", lineHeight: 1.8 }}>
+          <p style={{ color: "var(--color-text)", lineHeight: 1.8, marginBottom: "1rem" }}>
+            In The Mix provides consulting for beverage programs, menus, and operational systems designed to support both creativity and smooth execution.
+          </p>
+          <p style={{ color: "var(--color-text)", lineHeight: 1.8 }}>
             From concept development to workflow planning, every recommendation is grounded in real hospitality experience and built to perform during service.
           </p>
         </div>
       </section>
 
-      {/* Consulting Packages */}
-      <section style={{ backgroundColor: "var(--color-cream)", padding: "2rem 1.5rem 5rem", borderTop: "1px solid #e0d8cf" }}>
+      {/* PACKAGES */}
+      <section id="packages" style={{ background: "var(--color-cream)", padding: "0 0 6rem" }}>
         <div style={container}>
-          <SectionHeading>Consulting Packages</SectionHeading>
-
-          <div style={{ marginTop: "3rem", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <SectionHeading>Consulting packages</SectionHeading>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginTop: "3rem" }}>
             {consultingPackages.map((pkg) => (
-              <div key={pkg.title} className="service-card">
+              <article key={pkg.title} className="card pkg-card" style={{ padding: 0, overflow: "hidden", position: "relative" }}>
                 {pkg.badge && (
-                  <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-                    <span
-                      style={{
-                        display: "inline-block",
-                        border: "1.5px solid #1a1a1a",
-                        padding: "0.2rem 1.5rem",
-                        fontFamily: "var(--font-script)",
-                        fontSize: "1.3rem",
-                      }}
-                    >
-                      {pkg.badge}
-                    </span>
-                  </div>
+                  <span style={{ position: "absolute", top: "1.5rem", left: "50%", transform: "translateX(-50%)", background: "var(--color-cream-soft)", padding: "0.3rem 1.4rem", fontFamily: "var(--font-script)", fontSize: "1.5rem", color: "var(--color-hover)", border: "1.5px solid var(--color-ink)", whiteSpace: "nowrap", zIndex: 2 }}>
+                    {pkg.badge}
+                  </span>
                 )}
-
-                <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap" }}>
-                  <div style={{ flex: "1 1 400px" }}>
-                    <h2 style={{ fontWeight: 700, fontSize: "1rem", letterSpacing: "0.1em", marginBottom: "1.5rem", color: "#1a1a1a" }}>
-                      {pkg.title}
-                    </h2>
-                    <div>
-                      {pkg.items.map((item) => (
-                        <div key={item.label} className="service-item">
-                          <span>{item.label}</span>
-                          <span className="service-item-chevron">›</span>
-                        </div>
-                      ))}
+                <div style={{ display: "grid", gridTemplateColumns: pkg.imgFirst ? "1fr 1.4fr" : "1.4fr 1fr", gap: 0, minHeight: 360 }} className="pkg-grid">
+                  {pkg.imgFirst && (
+                    <div style={{ position: "relative", background: "#1a1410", minHeight: 280 }}>
+                      <Image src={pkg.img} alt="" fill style={{ objectFit: "cover" }} />
                     </div>
+                  )}
+                  <div style={{ padding: "3rem 2.5rem 2.5rem" }}>
+                    <h2 className="h-eyebrow" style={{ marginBottom: "1.5rem", fontSize: "0.78rem" }}>{pkg.title}</h2>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                      {pkg.items.map((it, i) => (
+                        <li key={it} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.85rem 0", borderBottom: i < pkg.items.length - 1 ? "1px solid var(--color-rule)" : "none", fontFamily: "var(--font-serif)", fontSize: "1.05rem", color: "var(--color-ink)" }}>
+                          <span>{it}</span>
+                          <span className="text-amber" style={{ fontFamily: "var(--font-sans)", fontSize: "1.2rem" }}>›</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div style={{ flexShrink: 0 }}>
-                    <Image
-                      src={pkg.img}
-                      alt={pkg.title}
-                      width={200}
-                      height={200}
-                      className="img-circle"
-                      style={{ width: "180px", height: "180px" }}
-                    />
-                  </div>
+                  {!pkg.imgFirst && (
+                    <div style={{ position: "relative", background: "#1a1410", minHeight: 280 }}>
+                      <Image src={pkg.img} alt="" fill style={{ objectFit: "cover" }} />
+                    </div>
+                  )}
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact form */}
-      <section style={{ backgroundColor: "var(--color-cream)", padding: "4rem 1.5rem 5rem", borderTop: "1px solid #e0d8cf" }}>
-        <div style={{ ...container, maxWidth: "640px" }}>
-          <SectionHeading>Contact Us</SectionHeading>
-          <h2 style={{ textAlign: "center", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.1em", textTransform: "uppercase", margin: "1.5rem 0 0.5rem" }}>
-            TELL ME ABOUT YOUR PROJECT
-          </h2>
-          <p style={{ textAlign: "center", fontSize: "0.9rem", color: "var(--color-text)", marginBottom: "2rem" }}>
+      {/* CONTACT */}
+      <section id="contact" style={{ background: "var(--color-cream)", borderTop: "1px solid var(--color-cream-deep)", padding: "6rem 2rem" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <SectionHeading>Contact us</SectionHeading>
+          <p className="h-eyebrow" style={{ textAlign: "center", margin: "1.5rem 0 0.5rem" }}>Tell us about your project</p>
+          <p style={{ textAlign: "center", color: "var(--color-text)", maxWidth: 560, margin: "0 auto 3rem" }}>
             Every concept is different, and the best solutions are built around how you want your space to feel and function. If you&apos;re exploring an idea or looking to improve an existing program, I&apos;d love to hear more.
           </p>
           <ConsultingForm />
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-grid, .pkg-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </>
   );
 }
