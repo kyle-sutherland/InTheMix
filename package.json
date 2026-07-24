@@ -46,5 +46,11 @@
     "eslint-plugin-react": "^*",
     "globals": "^17.4.0",
     "tailwindcss": "^4.2.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "sharp"
+    ]
   }
 }

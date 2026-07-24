@@ -46,3 +46,7 @@ yarn-error.log*
 # Local Netlify folder
 .netlify
 pnpm-lock.yaml
+
+# pnpm build-approval prompt file (regenerated locally, breaks Vercel's pnpm 9.x
+# workspace detection since it has no `packages` field)
+pnpm-workspace.yaml
