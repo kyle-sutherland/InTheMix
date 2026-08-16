@@ -4,8 +4,10 @@
    silently dropped — which is why backgrounds were transparent and the
    typefaces were falling back to system defaults. */
 
-export default {
+const config = {
   plugins: {
     "@tailwindcss/postcss": {},
   },
 };
+
+export default config;

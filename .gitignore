@@ -34,6 +34,8 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+# ...but the template of variable NAMES (no values) is meant to be committed.
+!.env.example
 
 
 # Local Vercel folder
