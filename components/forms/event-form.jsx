@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { OutlineButton } from "../button";
 
 const PACKAGES = ["Classic Bar", "Signature Cocktail Bar", "Full Event Bar", "Custom Bar"];
@@ -10,6 +11,7 @@ const CUSTOM_OPTIONS = ["Glassware", "Mix & Garnish", "Liquor Package"];
 
 export default function EventForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +20,8 @@ export default function EventForm() {
     setSubmitting(true);
     setError(null);
     try {
-      await axios.post("/api/contact", { ...data, formType: "event" });
+      const recaptchaToken = executeRecaptcha ? await executeRecaptcha("event_form") : undefined;
+      await axios.post("/api/contact", { ...data, formType: "event", recaptchaToken });
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again or email us directly.");

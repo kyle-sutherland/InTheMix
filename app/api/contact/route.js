@@ -7,6 +7,25 @@ import nodemailer from "nodemailer";
  * This avoids the googleapis/google-auth-library stack which has a broken
  * transitive dep (buffer-equal-constant-time) on Node 25.
  */
+async function verifyRecaptcha(token) {
+  if (!token) return { success: false, score: 0 };
+
+  const params = new URLSearchParams({
+    secret: process.env.RECAPTCHA_SECRET_KEY,
+    response: token,
+  });
+
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params.toString(),
+  });
+
+  if (!res.ok) return { success: false, score: 0 };
+
+  return res.json();
+}
+
 async function getGoogleAccessToken() {
   const params = new URLSearchParams({
     client_id: process.env.CLIENT_ID,
@@ -87,7 +106,17 @@ function buildGeneralEmail(data) {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { formType } = body;
+    const { formType, recaptchaToken, _gotcha } = body;
+
+    // Honeypot: real users never fill this hidden field in.
+    if (_gotcha) {
+      return Response.json({ error: "Submission rejected" }, { status: 400 });
+    }
+
+    const { success, score } = await verifyRecaptcha(recaptchaToken);
+    if (!success || score < 0.5) {
+      return Response.json({ error: "reCAPTCHA verification failed" }, { status: 403 });
+    }
 
     const accessToken = await getGoogleAccessToken();
 
