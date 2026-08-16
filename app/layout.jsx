@@ -53,7 +53,9 @@ export const metadata = {
     title: "In The Mix | Event Bartending & Hospitality Consulting",
     description:
       "Crafted cocktails, thoughtful hospitality, and systems that make great service possible. Event bartending and consulting for Calgary and beyond.",
-    images: [{ url: "/group-drinks.jpg", width: 1200, height: 630, alt: "In The Mix Bartending" }],
+    // Dimensions omitted deliberately: Next infers them from the local file.
+    // Hardcoding them risks lying to scrapers if the image is ever swapped.
+    images: [{ url: "/group-drinks.jpg", alt: "In The Mix Bartending" }],
   },
   twitter: {
     card: "summary_large_image",

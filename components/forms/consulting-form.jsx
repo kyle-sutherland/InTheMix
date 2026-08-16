@@ -14,6 +14,14 @@ const PROJECT_TYPES = [
   "Full Concept Development",
 ];
 
+/* Mirrors the server's check in app/api/contact/route.js. The form sets
+   noValidate, so without this a typo'd address would pass the client and come
+   back as an opaque 400. */
+const EMAIL_RULE = {
+  required: "Required",
+  pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email address" },
+};
+
 export default function ConsultingForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -33,7 +41,9 @@ export default function ConsultingForm() {
       setError(
         status === 403
           ? "We couldn't verify your submission. Please refresh the page and try again."
-          : "Something went wrong. Please try again or email us directly.",
+          : status === 400
+            ? "Please check the details you entered and try again."
+            : "Something went wrong. Please try again or email us directly.",
       );
     } finally {
       setSubmitting(false);
@@ -114,9 +124,9 @@ export default function ConsultingForm() {
           type="email"
           placeholder="Required Field"
           aria-invalid={errors.email ? "true" : undefined}
-          {...register("email", { required: true })}
+          {...register("email", EMAIL_RULE)}
         />
-        {errors.email && <span className="field-error" role="alert">Required</span>}
+        {errors.email && <span className="field-error" role="alert">{errors.email.message}</span>}
       </div>
 
       <div className="field">
