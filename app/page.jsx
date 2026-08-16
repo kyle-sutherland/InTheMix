@@ -4,6 +4,17 @@ import { Button } from '../components/button';
 import EventForm from '../components/forms/event-form';
 import ConsultingForm from '../components/forms/consulting-form';
 
+export const metadata = {
+  // Home uses the layout's default title rather than the "%s | In The Mix"
+  // template, so the brand name isn't doubled up.
+  title: {
+    absolute: 'In The Mix | Event Bartending & Hospitality Consulting in Calgary',
+  },
+  description:
+    'Professional event bartending and hospitality consulting in Calgary. Crafted cocktails, thoughtful service, and beverage programs built to last.',
+  alternates: { canonical: '/' },
+};
+
 const container = { maxWidth: '1180px', margin: '0 auto', padding: '0 2rem' };
 
 export default function HomePage() {

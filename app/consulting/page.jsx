@@ -3,6 +3,13 @@ import SectionHeading from "../../components/section-heading";
 import { Button } from "../../components/button";
 import ConsultingForm from "../../components/forms/consulting-form";
 
+export const metadata = {
+  title: "Hospitality Consulting",
+  description:
+    "Bar and restaurant consulting in Calgary: new openings, beverage and culinary program development, service infrastructure, and full concept development.",
+  alternates: { canonical: "/consulting" },
+};
+
 const container = { maxWidth: "1180px", margin: "0 auto", padding: "0 2rem" };
 
 const consultingPackages = [

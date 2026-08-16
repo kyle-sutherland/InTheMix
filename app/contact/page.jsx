@@ -2,6 +2,13 @@ import SectionHeading from "../../components/section-heading";
 import EventForm from "../../components/forms/event-form";
 import ConsultingForm from "../../components/forms/consulting-form";
 
+export const metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with In The Mix for event bartending or hospitality consulting in Calgary. Request a quote for your event or project.",
+  alternates: { canonical: "/contact" },
+};
+
 const container = { maxWidth: "1080px", margin: "0 auto", padding: "0 1.5rem" };
 
 export default function ContactPage() {

@@ -3,6 +3,13 @@ import SectionHeading from "../../components/section-heading";
 import { Button } from "../../components/button";
 import EventForm from "../../components/forms/event-form";
 
+export const metadata = {
+  title: "Event Bartending",
+  description:
+    "Professional event bartending in Calgary for weddings, corporate events, and private parties. Classic, signature cocktail, and full event bar packages.",
+  alternates: { canonical: "/event-bartending" },
+};
+
 const container = { maxWidth: "1180px", margin: "0 auto", padding: "0 2rem" };
 
 const features = [

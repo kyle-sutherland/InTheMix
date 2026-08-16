@@ -2,6 +2,13 @@ import Image from "next/image";
 import SectionHeading from "../../components/section-heading";
 import { Button } from "../../components/button";
 
+export const metadata = {
+  title: "About",
+  description:
+    "Meet the team behind In The Mix — Calgary bartenders and hospitality consultants focused on craft, service, and systems that work.",
+  alternates: { canonical: "/about" },
+};
+
 const container = { maxWidth: "1180px", margin: "0 auto", padding: "0 2rem" };
 
 const timeline = [

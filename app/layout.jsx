@@ -1,6 +1,7 @@
 import { Inter, Fraunces, Allura } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE_URL } from "../lib/site";
 import RecaptchaProvider from "../components/recaptcha-provider";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
@@ -32,16 +33,6 @@ const allura = Allura({
   variable: "--font-allura",
   display: "swap",
 });
-
-/* Canonical origin for absolute OG/canonical URLs. Vercel injects
-   VERCEL_PROJECT_PRODUCTION_URL on every deploy, so previews and production
-   both resolve correctly without hardcoding a domain. Override with
-   NEXT_PUBLIC_SITE_URL once a custom domain is attached. */
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
 
 /* Icons come from the App Router file convention (app/icon.png,
    app/apple-icon.png) — no `icons` key needed. The previous metadata pointed

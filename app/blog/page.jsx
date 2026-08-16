@@ -2,8 +2,10 @@ import SectionHeading from "../../components/section-heading";
 import { OutlineButton } from "../../components/button";
 
 export const metadata = {
-  title: "Blog | In The Mix",
+  title: "Blog",
   description: "Insights on event bartending, hospitality consulting, and building beverage programs.",
+  // Not linked from nav yet and excluded from the sitemap until it has posts.
+  robots: { index: false, follow: true },
 };
 
 export default function BlogPage() {
