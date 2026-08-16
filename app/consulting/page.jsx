@@ -90,12 +90,12 @@ export default function ConsultingPage() {
         <div style={container}>
           <SectionHeading>Consulting packages</SectionHeading>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginTop: "3rem" }}>
+            {/* No overflow:hidden on the article — it lives on .pkg-grid so the
+                badge can straddle the card's top border without being clipped. */}
             {consultingPackages.map((pkg) => (
-              <article key={pkg.title} className="card pkg-card" style={{ padding: 0, overflow: "hidden", position: "relative" }}>
+              <article key={pkg.title} className="card pkg-card" style={{ padding: 0, position: "relative" }}>
                 {pkg.badge && (
-                  <span style={{ position: "absolute", top: "1.5rem", left: "50%", transform: "translateX(-50%)", background: "var(--color-cream-soft)", padding: "0.3rem 1.4rem", fontFamily: "var(--font-script)", fontSize: "1.5rem", color: "var(--color-hover)", border: "1.5px solid var(--color-ink)", whiteSpace: "nowrap", zIndex: 2 }}>
-                    {pkg.badge}
-                  </span>
+                  <span className="pkg-badge">{pkg.badge}</span>
                 )}
                 <div style={{ display: "grid", gridTemplateColumns: pkg.imgFirst ? "1fr 1.4fr" : "1.4fr 1fr", gap: 0, minHeight: 360 }} className="pkg-grid">
                   {pkg.imgFirst && (
@@ -103,7 +103,7 @@ export default function ConsultingPage() {
                       <Image src={pkg.img} alt="" fill sizes="(max-width: 900px) 100vw, 40vw" style={{ objectFit: "cover" }} />
                     </div>
                   )}
-                  <div style={{ padding: "3rem 2.5rem 2.5rem" }}>
+                  <div className="pkg-body">
                     <h2 className="h-eyebrow" style={{ marginBottom: "1.5rem", fontSize: "0.78rem" }}>{pkg.title}</h2>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                       {pkg.items.map((it, i) => (
@@ -139,8 +139,38 @@ export default function ConsultingPage() {
       </section>
 
       <style>{`
+        /* Clipping lives here rather than on .pkg-card so the images stay inside
+           the card's rounded corners while the badge can overhang the top edge. */
+        .pkg-grid { overflow: hidden; border-radius: 4px; }
+
+        .pkg-body { padding: 3rem 2.5rem 2.5rem; }
+
+        /* Straddles the card's top border, matching the "Most Popular" badge on
+           the event-bartending page. */
+        .pkg-badge {
+          position: absolute;
+          top: -1rem;
+          left: 50%;
+          transform: translateX(-50%);
+          background: var(--color-cream-soft);
+          padding: 0.3rem 1.4rem;
+          font-family: var(--font-script);
+          font-size: 1.5rem;
+          color: var(--color-hover);
+          border: 1.5px solid var(--color-ink);
+          white-space: nowrap;
+          z-index: 2;
+        }
+
+        /* No max-width needed on the title: the badge sits above the card's
+           content rather than over it, so the two can't collide at any width —
+           which is what makes this robust for longer titles too. */
+
         @media (max-width: 900px) {
           .hero-grid, .pkg-grid { grid-template-columns: 1fr !important; }
+          /* Clear the overhanging badge once the card stacks and the text
+             column runs full width. */
+          .pkg-card .pkg-body { padding-top: 3.5rem; }
         }
       `}</style>
     </>
