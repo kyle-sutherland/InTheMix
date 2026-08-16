@@ -41,7 +41,7 @@ export default function AboutPage() {
             </div>
             <div style={{ position: "relative" }}>
               <div style={{ aspectRatio: "4/5", overflow: "hidden", position: "relative" }}>
-                <Image src="/drink1.jpg" alt="Robyn" fill style={{ objectFit: "cover" }} />
+                <Image src="/drink1.jpg" alt="A finished cocktail on the bar" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
               </div>
               <div style={{ position: "absolute", bottom: "-1rem", left: "-1rem", background: "var(--color-cream)", border: "1px solid var(--color-rule)", padding: "0.6rem 1rem" }}>
                 <p className="h-script" style={{ color: "var(--color-hover)", fontSize: "1.4rem", lineHeight: 1 }}>Robyn</p>
@@ -91,7 +91,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div style={{ aspectRatio: "4/5", overflow: "hidden", position: "relative" }}>
-              <Image src="/drink2.jpg" alt="" fill style={{ objectFit: "cover" }} />
+              <Image src="/drink2.jpg" alt="Cocktails arranged for service" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
             </div>
           </div>
         </div>

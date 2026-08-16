@@ -64,7 +64,7 @@ export default function ConsultingPage() {
             </div>
           </div>
           <div style={{ position: "relative", background: "#0d0a07", minHeight: "60vh" }}>
-            <Image src="/drink1.jpg" alt="" fill style={{ objectFit: "cover" }} />
+            <Image src="/drink1.jpg" alt="Cocktail from a bar program build" fill priority sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </div>
         </div>
       </section>
@@ -100,7 +100,7 @@ export default function ConsultingPage() {
                 <div style={{ display: "grid", gridTemplateColumns: pkg.imgFirst ? "1fr 1.4fr" : "1.4fr 1fr", gap: 0, minHeight: 360 }} className="pkg-grid">
                   {pkg.imgFirst && (
                     <div style={{ position: "relative", background: "#1a1410", minHeight: 280 }}>
-                      <Image src={pkg.img} alt="" fill style={{ objectFit: "cover" }} />
+                      <Image src={pkg.img} alt="" fill sizes="(max-width: 900px) 100vw, 40vw" style={{ objectFit: "cover" }} />
                     </div>
                   )}
                   <div style={{ padding: "3rem 2.5rem 2.5rem" }}>
@@ -116,7 +116,7 @@ export default function ConsultingPage() {
                   </div>
                   {!pkg.imgFirst && (
                     <div style={{ position: "relative", background: "#1a1410", minHeight: 280 }}>
-                      <Image src={pkg.img} alt="" fill style={{ objectFit: "cover" }} />
+                      <Image src={pkg.img} alt="" fill sizes="(max-width: 900px) 100vw, 40vw" style={{ objectFit: "cover" }} />
                     </div>
                   )}
                 </div>

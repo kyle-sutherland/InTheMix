@@ -54,8 +54,10 @@ export default function Navbar() {
             }}>
             <Image
               src='/In-The-Mix(teal).svg'
-              alt='In The Mix logo'
+              alt='In The Mix Bartending'
               fill
+              priority
+              sizes='248px'
               style={{
                 display: 'block',
                 overflow: 'hidden',

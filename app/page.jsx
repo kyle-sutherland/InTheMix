@@ -130,8 +130,11 @@ export default function HomePage() {
           <div style={{ position: 'relative', background: '#0d0a07' }}>
             <Image
               src='/group-drinks.jpg'
-              alt=''
+              alt='Friends toasting with cocktails at an In The Mix event bar'
               fill
+              // LCP image: preload it rather than letting it lazy-load.
+              priority
+              sizes='(max-width: 900px) 100vw, 50vw'
               style={{ objectFit: 'cover', opacity: 0.92 }}
             />
             <div
@@ -207,8 +210,9 @@ export default function HomePage() {
                 }}>
                 <Image
                   src='/drink1.jpg'
-                  alt='Event bartending'
+                  alt='Bartender preparing a cocktail at an event bar'
                   fill
+                  sizes='(max-width: 900px) 100vw, 50vw'
                   style={{ objectFit: 'cover' }}
                 />
               </div>
@@ -258,8 +262,9 @@ export default function HomePage() {
                 }}>
                 <Image
                   src='/drink2.jpg'
-                  alt='Hospitality consulting'
+                  alt='Cocktails plated as part of a beverage program build'
                   fill
+                  sizes='(max-width: 900px) 100vw, 50vw'
                   style={{ objectFit: 'cover' }}
                 />
               </div>
