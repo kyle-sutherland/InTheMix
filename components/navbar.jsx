@@ -10,7 +10,8 @@ const navLinks = [
   { label: 'Event Bartending', href: '/event-bartending' },
   { label: 'Consulting', href: '/consulting' },
   { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
+  // Blog is hidden until it has real posts; the page still exists at /blog.
+  // { label: 'Blog', href: '/blog' },
 ];
 
 export default function Navbar() {

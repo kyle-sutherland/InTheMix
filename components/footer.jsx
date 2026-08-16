@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -23,18 +22,17 @@ export default function Footer() {
           <Link href="/contact" style={footerLink}>Contact</Link>
         </FooterCol>
 
+        {/* Blog is intentionally unlinked until it has real content — the page
+            still exists at /blog, just isn't advertised. */}
         <FooterCol title="Information">
           <Link href="/about" style={footerLink}>About</Link>
-          <Link href="/blog" style={footerLink}>Blog</Link>
         </FooterCol>
       </div>
 
-      <div style={{ maxWidth: "1180px", margin: "3rem auto 0", padding: "1.5rem 2rem 0", borderTop: "1px solid #2a2118", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "0.75rem", color: "#6b5e4f" }}>
+      {/* Social icons removed: they pointed at instagram.com / facebook.com
+          (platform home pages, not profiles). Restore with real profile URLs. */}
+      <div style={{ maxWidth: "1180px", margin: "3rem auto 0", padding: "1.5rem 2rem 0", borderTop: "1px solid #2a2118", fontSize: "0.75rem", color: "#6b5e4f" }}>
         <span>© {new Date().getFullYear()} In The Mix Bartending · Calgary, AB</span>
-        <div style={{ display: "flex", gap: "1rem" }}>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={socialIcon}><FaInstagram /></a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={socialIcon}><FaFacebook /></a>
-        </div>
       </div>
 
       <style>{`
@@ -47,7 +45,6 @@ export default function Footer() {
 }
 
 const footerLink = { color: "#b3a896", textDecoration: "none", display: "block", padding: "0.2rem 0" };
-const socialIcon = { width: 34, height: 34, border: "1px solid #3a2e22", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#b3a896", fontSize: "0.85rem" };
 
 function FooterCol({ title, children }) {
   return (

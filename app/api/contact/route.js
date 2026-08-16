@@ -2,43 +2,137 @@ export const runtime = "nodejs";
 
 import nodemailer from "nodemailer";
 
+/* Outbound calls get a hard timeout so a hung upstream can't hold the function
+   open until the platform kills it. */
+const FETCH_TIMEOUT_MS = 10_000;
+
+/* Length caps. The App Router does NOT honour the old Pages-Router
+   `bodyParser.sizeLimit`, so without these a multi-megabyte field would be
+   parsed and pasted straight into an email. */
+const LIMITS = {
+  name: 200,
+  email: 320, // RFC 5321 maximum
+  phone: 50,
+  businessName: 200,
+  location: 200,
+  guests: 20,
+  date: 40,
+  startTime: 40,
+  endTime: 40,
+  message: 5000,
+};
+
+const FORM_TYPES = new Set(["event", "consulting", "general"]);
+
+/* reCAPTCHA actions must match what the client passes to executeRecaptcha().
+   Asserting this stops a token minted for one form (or on an attacker's own
+   page using the public site key) from being replayed against another. */
+const EXPECTED_ACTIONS = {
+  event: "event_form",
+  consulting: "consulting_form",
+};
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function fieldError(data, field, { required = false } = {}) {
+  const raw = data[field];
+  if (raw === undefined || raw === null || String(raw).trim() === "") {
+    return required ? `${field} is required` : null;
+  }
+  if (String(raw).length > LIMITS[field]) {
+    return `${field} exceeds ${LIMITS[field]} characters`;
+  }
+  return null;
+}
+
 /**
- * Exchange a refresh token for an access token using Google's token endpoint directly.
- * This avoids the googleapis/google-auth-library stack which has a broken
- * transitive dep (buffer-equal-constant-time) on Node 25.
+ * Server-side validation. The forms validate with react-hook-form, but that is
+ * client-side only and trivially bypassed by posting directly to this route.
  */
-async function verifyRecaptcha(token) {
-  if (!token) return { success: false, score: 0 };
+function validate(formType, data) {
+  const required = {
+    event: ["name", "email", "guests", "date", "startTime", "endTime"],
+    consulting: ["businessName", "location", "name", "email", "phone"],
+    general: ["name", "email"],
+  }[formType];
 
-  const params = new URLSearchParams({
-    secret: process.env.RECAPTCHA_SECRET_KEY,
-    response: token,
-  });
+  const errors = [];
+  for (const field of Object.keys(LIMITS)) {
+    const err = fieldError(data, field, { required: required.includes(field) });
+    if (err) errors.push(err);
+  }
 
-  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+  if (data.email && !EMAIL_RE.test(String(data.email).trim())) {
+    errors.push("email is not a valid address");
+  }
+
+  return errors;
+}
+
+/** Cap array fields (checkbox groups) to known-sane sizes. */
+function safeList(value, max = 20) {
+  if (!Array.isArray(value)) return value ? [String(value).slice(0, 200)] : [];
+  return value.slice(0, max).map((v) => String(v).slice(0, 200));
+}
+
+async function postForm(url, params) {
+  const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: params.toString(),
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
+  return res;
+}
 
-  if (!res.ok) return { success: false, score: 0 };
+async function verifyRecaptcha(token, expectedAction) {
+  if (!token) return { ok: false, reason: "missing token" };
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    // Fail closed: a missing secret must never mean "everyone passes".
+    console.error("RECAPTCHA_SECRET_KEY is not set");
+    return { ok: false, reason: "server misconfigured" };
+  }
 
-  return res.json();
+  let res;
+  try {
+    res = await postForm("https://www.google.com/recaptcha/api/siteverify", new URLSearchParams({
+      secret: process.env.RECAPTCHA_SECRET_KEY,
+      response: token,
+    }));
+  } catch {
+    return { ok: false, reason: "siteverify unreachable" };
+  }
+
+  if (!res.ok) return { ok: false, reason: `siteverify HTTP ${res.status}` };
+
+  const data = await res.json();
+  if (!data.success) return { ok: false, reason: "token rejected" };
+
+  /* v3 always returns a numeric score. A v2 key returns none — and
+     `undefined < 0.5` is false, which would silently let everything through.
+     Require an actual number. */
+  if (typeof data.score !== "number") {
+    return { ok: false, reason: "no score (wrong key type?)" };
+  }
+  if (data.score < 0.5) return { ok: false, reason: `low score ${data.score}` };
+
+  /* Deliberately NOT asserting `hostname`: siteverify reports the domain the
+     token was minted on, which on Vercel includes every preview deploy URL.
+     Asserting it would break the forms on previews. */
+  if (expectedAction && data.action !== expectedAction) {
+    return { ok: false, reason: `action mismatch: ${data.action}` };
+  }
+
+  return { ok: true };
 }
 
 async function getGoogleAccessToken() {
-  const params = new URLSearchParams({
+  const res = await postForm("https://oauth2.googleapis.com/token", new URLSearchParams({
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
     refresh_token: process.env.REFRESH_TOKEN,
     grant_type: "refresh_token",
-  });
-
-  const res = await fetch("https://oauth2.googleapis.com/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: params.toString(),
-  });
+  }));
 
   if (!res.ok) {
     const err = await res.text();
@@ -65,8 +159,8 @@ function buildEventEmail(data) {
       `DATE: ${date}`,
       `START TIME: ${startTime}`,
       `END TIME: ${endTime}`,
-      `PACKAGES: ${Array.isArray(packages) ? packages.join(", ") : packages || "—"}`,
-      `CUSTOM BAR SELECTIONS: ${Array.isArray(customBarSelections) ? customBarSelections.join(", ") : customBarSelections || "—"}`,
+      `PACKAGES: ${safeList(packages).join(", ") || "—"}`,
+      `CUSTOM BAR SELECTIONS: ${safeList(customBarSelections).join(", ") || "—"}`,
       `MESSAGE:\n${message || "—"}`,
     ].join("\n"),
   };
@@ -79,7 +173,7 @@ function buildConsultingEmail(data) {
     subject: `Hospitality Consulting Inquiry from ${name}`,
     text: [
       `BUSINESS / PROJECT: ${businessName}`,
-      `PROJECT TYPE(S): ${Array.isArray(projectTypes) ? projectTypes.join(", ") : projectTypes || "—"}`,
+      `PROJECT TYPE(S): ${safeList(projectTypes).join(", ") || "—"}`,
       `LOCATION: ${location}`,
       `NAME: ${name}`,
       `EMAIL: ${email}`,
@@ -103,19 +197,43 @@ function buildGeneralEmail(data) {
   };
 }
 
+const BUILDERS = {
+  event: buildEventEmail,
+  consulting: buildConsultingEmail,
+  general: buildGeneralEmail,
+};
+
 export async function POST(request) {
   try {
-    const body = await request.json();
-    const { formType, recaptchaToken, _gotcha } = body;
+    let body;
+    try {
+      body = await request.json();
+    } catch {
+      return Response.json({ error: "Invalid JSON body" }, { status: 400 });
+    }
+
+    const { formType = "general", recaptchaToken, _gotcha } = body;
 
     // Honeypot: real users never fill this hidden field in.
     if (_gotcha) {
       return Response.json({ error: "Submission rejected" }, { status: 400 });
     }
 
-    const { success, score } = await verifyRecaptcha(recaptchaToken);
-    if (!success || score < 0.5) {
+    /* Reject unknown form types rather than silently falling through to the
+       general email, which used to happen for any typo'd value. */
+    if (!FORM_TYPES.has(formType)) {
+      return Response.json({ error: "Unknown form type" }, { status: 400 });
+    }
+
+    const recaptcha = await verifyRecaptcha(recaptchaToken, EXPECTED_ACTIONS[formType]);
+    if (!recaptcha.ok) {
+      console.warn("reCAPTCHA rejected submission:", recaptcha.reason);
       return Response.json({ error: "reCAPTCHA verification failed" }, { status: 403 });
+    }
+
+    const errors = validate(formType, body);
+    if (errors.length) {
+      return Response.json({ error: "Validation failed", details: errors }, { status: 400 });
     }
 
     const accessToken = await getGoogleAccessToken();
@@ -132,18 +250,14 @@ export async function POST(request) {
       },
     });
 
-    let emailContent;
-    if (formType === "event") {
-      emailContent = buildEventEmail(body);
-    } else if (formType === "consulting") {
-      emailContent = buildConsultingEmail(body);
-    } else {
-      emailContent = buildGeneralEmail(body);
-    }
+    const emailContent = BUILDERS[formType](body);
 
     await transporter.sendMail({
       from: process.env.WEBMASTER_EMAIL,
       to: process.env.RECIPIENT_EMAIL,
+      /* Safe only because `email` passed EMAIL_RE above — an unvalidated value
+         in an address header would be injectable. */
+      replyTo: String(body.email).trim(),
       subject: emailContent.subject,
       text: emailContent.text,
     });
