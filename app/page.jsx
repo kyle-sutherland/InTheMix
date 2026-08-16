@@ -126,8 +126,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right: image w/ floating quote */}
-          <div style={{ position: 'relative', background: '#0d0a07' }}>
+          {/* Right: image w/ floating quote.
+              minHeight matches the consulting/event-bartending heroes — without
+              it this column collapses to 0px once .hero-grid stacks, taking the
+              fill image with it. Inert on desktop, where the grid's own
+              minHeight sets a taller row. */}
+          <div style={{ position: 'relative', background: '#0d0a07', minHeight: '55vh' }}>
             <Image
               src='/group-drinks.jpg'
               alt='Four people toasting with cocktails around an outdoor fire pit'
@@ -137,17 +141,7 @@ export default function HomePage() {
               sizes='(max-width: 900px) 100vw, 50vw'
               style={{ objectFit: 'cover', opacity: 0.92 }}
             />
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '2.5rem',
-                left: '-3rem',
-                background: 'var(--color-cream)',
-                padding: '1.5rem 1.75rem',
-                maxWidth: 280,
-                borderLeft: '3px solid var(--color-accent)',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
-              }}>
+            <div className='hero-quote'>
               <p
                 style={{
                   fontFamily: 'var(--font-serif)',
@@ -376,9 +370,32 @@ export default function HomePage() {
 
       {/* responsive */}
       <style>{`
+        /* Desktop: overhangs the photo's left edge onto the dark text column.
+           A class rather than an inline style so the media query below can
+           override it without !important. */
+        .hero-quote {
+          position: absolute;
+          bottom: 2.5rem;
+          left: -3rem;
+          max-width: 280px;
+          background: var(--color-cream);
+          padding: 1.5rem 1.75rem;
+          border-left: 3px solid var(--color-accent);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        }
+
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .grid-2 { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+          /* Once stacked there is no column to overhang: a negative left just
+             clips against the section's overflow:hidden and the box drifts up
+             over the CTAs. Inset it so it overlaps the photo instead. */
+          .hero-quote {
+            left: 1.25rem;
+            right: 1.25rem;
+            bottom: 1.5rem;
+            max-width: none;
+          }
         }
       `}</style>
     </>
