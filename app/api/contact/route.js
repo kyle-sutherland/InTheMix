@@ -106,7 +106,15 @@ async function verifyRecaptcha(token, expectedAction) {
   if (!res.ok) return { ok: false, reason: `siteverify HTTP ${res.status}` };
 
   const data = await res.json();
-  if (!data.success) return { ok: false, reason: "token rejected" };
+  if (!data.success) {
+    /* Google's `error-codes` is what separates the three unrelated causes:
+       invalid-input-secret (wrong/missing RECAPTCHA_SECRET_KEY),
+       browser-error (production domain not registered for the key), and
+       timeout-or-duplicate (token expired or already redeemed). Collapsing
+       them into one string makes this failure undiagnosable from the logs. */
+    const codes = Array.isArray(data["error-codes"]) ? data["error-codes"].join(", ") : "none";
+    return { ok: false, reason: `token rejected (${codes})` };
+  }
 
   /* v3 always returns a numeric score. A v2 key returns none — and
      `undefined < 0.5` is false, which would silently let everything through.
