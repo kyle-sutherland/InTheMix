@@ -44,7 +44,7 @@ export default function AboutPage() {
               <div style={{ aspectRatio: "4/5", overflow: "hidden", position: "relative" }}>
                 <Image src="/drink1.jpg" alt="Robyn, founder of In The Mix, shaking a cocktail" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
               </div>
-              <div style={{ position: "absolute", bottom: "-1rem", left: "-1rem", background: "var(--color-cream)", border: "1px solid var(--color-rule)", padding: "0.6rem 1rem" }}>
+              <div className="hero-badge">
                 <p className="h-script" style={{ color: "var(--color-hover)", fontSize: "1.4rem", lineHeight: 1 }}>Robyn</p>
                 <p style={{ fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-text)", margin: "0.25rem 0 0" }}>
                   Founder · Bartender · Consultant
@@ -158,9 +158,44 @@ export default function AboutPage() {
       </section>
 
       <style>{`
+        /* Lives in a class rather than inline so the media query below can
+           override it without !important (same approach as .hero-quote in
+           app/page.jsx and .pkg-badge in consulting/page.jsx). The negative
+           left is deliberate on desktop: the box overhangs the photo's left
+           edge into the adjacent text column. */
+        .hero-badge {
+          position: absolute;
+          bottom: -1rem;
+          left: -1rem;
+          background: var(--color-cream);
+          border: 1px solid var(--color-rule);
+          padding: 0.6rem 1rem;
+        }
+
         @media (max-width: 900px) {
           .hero-grid, .grid-2 { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
           .timeline { grid-template-columns: 1fr !important; gap: 1rem !important; }
+          /* Once stacked there is no text column to overhang, so a negative
+             left just drifts the box toward the viewport edge (and clips
+             against the section's overflow:hidden).
+
+             Pinning BOTH left and right (rather than centering with a
+             translate) makes the box track the photo's width at a constant
+             inset on narrow screens, instead of sizing to its own content.
+             Same approach as .hero-quote in app/page.jsx.
+
+             max-width caps it at 340px so it stops growing once the photo is
+             wide enough; margin:auto re-centers it inside the inset box once
+             the cap takes over, since left/right alone would otherwise stretch
+             it. Net effect: tracks the photo below ~450px, fixed 340px above. */
+          .hero-badge {
+            left: 1.25rem;
+            right: 1.25rem;
+            max-width: 340px;
+            margin: 0 auto;
+            transform: none;
+            text-align: center;
+          }
         }
       `}</style>
     </>
