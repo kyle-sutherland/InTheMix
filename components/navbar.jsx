@@ -1,118 +1,155 @@
-import { Disclosure } from '@headlessui/react'
-import Image from 'next/image'
+'use client';
 
-const navigation = [
-  // { name: "Home", href: "/", current: null },
-  { name: 'About Us', href: '/#about', current: null },
-  { name: 'Signature Cocktails', href: '/#cocktails', current: null },
-  { name: 'Contact', href: '/#contact', current: null }
-  // { name: "Resources", href: "/resources", current: null },
-]
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Event Bartending', href: '/event-bartending' },
+  { label: 'Consulting', href: '/consulting' },
+  { label: 'About', href: '/about' },
+  // Blog is hidden until it has real posts; the page still exists at /blog.
+  // { label: 'Blog', href: '/blog' },
+];
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
-    <Disclosure as='nav' className='navigation z-20 w-full shadow sticky top-0'>
-      {({ open }) => (
-        <>
-          <div className='justify-between pr-4 lg:pr-0 mx-auto lg:max-w-7xl md:items-center md:flex md:pr-8'>
-            <div>
-              <div className='flex items-center justify-between md:block'>
-                <a href='#'>
-                  <Image
-                    src='/In-The-Mix(teal).svg'
-                    width={240}
-                    height={64}
-                    alt='navigate to home'
-                    aria-label='Navigate to homepage'
-                    className='h-24 object-cover overflow-hidden'
-                  />
-                </a>
-                <div className='md:hidden'>
-                  <Disclosure.Button className='p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border'>
-                    {open
-                      ? (
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          className='w-6 h-6 text-charcoal'
-                          viewBox='0 0 20 20'
-                          fill='currentColor'
-                        >
-                          <path
-                            fillRule='evenodd'
-                            d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                            clipRule='evenodd'
-                          />
-                        </svg>
-                      )
-                      : (
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          className='w-6 h-6 text-charcoal'
-                          fill='none'
-                          viewBox='0 0 24 24'
-                          stroke='currentColor'
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M4 6h16M4 12h16M4 18h16'
-                          />
-                        </svg>
-                      )}
-                  </Disclosure.Button>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-end'>
-              <div className='hidden md:ml-6 md:block'>
-                <div className='items-center justify-center px-4 space-y-8 md:flex md:space-x-3 md:space-y-0'>
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? 'text-gray-900 bg-gray-200'
-                          : 'text-charcoal bg-inherit hover:bg-gray-200 hover:text-gray-900',
-                        'rounded-md px-3 py-2'
-                      )}
-                      aria-label={item.name}
-                      aria-current={item.current ? 'page' : undefined}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <Disclosure.Panel className='md:hidden'>
-            <div className='px-2 pb-3 pt-2'>
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as='a'
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'text-gray-900 bg-gray-300'
-                      : 'text-charcoal bg-inherit hover:bg-gray-200 hover:text-gray-900',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
+    <header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        background: 'var(--color-ink)',
+        color: '#f4eee5',
+      }}>
+      <div
+        style={{
+          maxWidth: '1180px',
+          margin: '0 auto',
+          padding: '0.2rem 2rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '2rem',
+        }}>
+        <div
+          className='nav-logo'
+          style={{
+            justifyContent: 'flex-start',
+            height: '100px',
+            width: '248px',
+            position: 'relative',
+          }}>
+          <Link
+            href='/'
+            style={{
+              alignItems: 'center',
+              gap: '0.7rem',
+              textDecoration: 'none',
+            }}>
+            <Image
+              src='/In-The-Mix(teal).svg'
+              alt='In The Mix Bartending'
+              fill
+              priority
+              sizes='248px'
+              style={{
+                display: 'block',
+                overflow: 'hidden',
+                objectFit: 'cover',
+              }}
+            />
+          </Link>
+        </div>
+        <nav
+          className='nav-desktop'
+          style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+          {navLinks.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`nav-link ${pathname === l.href ? 'active' : ''}`}>
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        <Link
+          href='/contact'
+          className='nav-cta-desktop'
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '0.6rem 1.2rem',
+            border: '1px solid var(--color-accent)',
+            color: 'var(--color-accent)',
+            fontSize: '0.72rem',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            textDecoration: 'none',
+            fontWeight: 500,
+          }}>
+          Get in touch
+        </Link>
+
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label='Toggle menu'
+          className='nav-hamburger'
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            color: '#e0d8cf',
+            fontSize: '1.5rem',
+            padding: '0.5rem',
+          }}>
+          {open ? '✕' : '☰'}
+        </button>
+      </div>
+
+      {open && (
+        <nav
+          style={{
+            background: '#111',
+            padding: '1rem 1.5rem 1.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}>
+          {navLinks.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className='nav-link'
+              onClick={() => setOpen(false)}
+              style={{ fontSize: '0.95rem' }}>
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            href='/contact'
+            className='nav-link'
+            onClick={() => setOpen(false)}
+            style={{ fontSize: '0.95rem', color: 'var(--color-accent)' }}>
+            Get in touch
+          </Link>
+        </nav>
       )}
-    </Disclosure>
-  )
+
+      <style>{`
+        .nav-desktop, .nav-cta-desktop { display: flex; }
+        .nav-hamburger { display: none; }
+        @media (max-width: 900px) {
+          .nav-desktop, .nav-cta-desktop { display: none !important; }
+          .nav-hamburger { display: block !important; }
+        }
+      `}</style>
+    </header>
+  );
 }

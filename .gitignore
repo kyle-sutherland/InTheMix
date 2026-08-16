@@ -26,11 +26,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+# NOTE: `*.env` is deliberate — an editor temp file (.null-ls_<pid>.env) once
+# slipped past the rules below and leaked credentials into a public repo.
+*.env
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+# ...but the template of variable NAMES (no values) is meant to be committed.
+!.env.example
 
 
 # Local Vercel folder
@@ -45,4 +50,10 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
-pnpm-lock.yaml
+
+# pnpm-lock.yaml is intentionally NOT ignored — it is committed so Vercel gets
+# reproducible installs via `pnpm install --frozen-lockfile`.
+
+# pnpm build-approval prompt file (regenerated locally, breaks Vercel's pnpm 9.x
+# workspace detection since it has no `packages` field)
+pnpm-workspace.yaml

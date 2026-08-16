@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/* Fonts are loaded in app/layout.jsx via next/font/google and exposed as
+   --font-inter / --font-fraunces / --font-allura CSS variables. */
+
+@theme {
+  /* Refined warm palette */
+  --color-cream: #F4EEE5;
+  --color-cream-soft: #FAF6EF;
+  --color-cream-deep: #EBE2D3;
+  --color-paper: #FFFFFF;
+
+  --color-ink: #1B1814;
+  --color-ink-soft: #3A332C;
+  --color-text: #6B635A;
+  --color-rule: #D9CDB8;
+
+  --color-accent: #B7763E;        /* amber */
+  --color-accent-deep: #8E5A2A;
+  --color-hover: #006C82;         /* teal */
+  --color-hover-soft: #1A8AA1;
+  --color-dark: #1B1814;
+  --color-dark-footer: #15110D;
+  --color-error: #A32E22;         /* form validation; warm red to suit the palette */
+
+  --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: var(--font-fraunces), "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-script: var(--font-allura), "Allura", cursive;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-ink-soft);
+  background-color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+/* Display headings (Fraunces) */
+.h-display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  color: var(--color-ink);
+  margin: 0;
+}
+.h-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--color-ink);
+  margin: 0;
+}
+.h-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+}
+.h-script {
+  font-family: var(--font-script);
+  color: var(--color-hover);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+/* Section heading w/ flanking rules */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 auto 2.5rem;
+}
+.section-heading hr {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+  margin: 0;
+}
+.section-heading .label {
+  font-family: var(--font-script);
+  color: var(--color-accent);
+  font-size: 2.2rem;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  /* asymmetric padding compensates for trailing letter-spacing so text reads optically centered */
+  padding: 0.95rem 1.55rem 0.85rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.btn:hover { background: var(--color-accent); color: var(--color-cream-soft); }
+.btn:disabled { cursor: not-allowed; opacity: 0.7; }
+.btn:disabled:hover { background: transparent; color: var(--color-accent); }
+.btn-light { border-color: rgba(255,255,255,0.85); color: #fff; }
+.btn-light:hover { background: #fff; color: var(--color-ink); border-color: #fff; }
+.btn-filled { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-cream-soft); }
+.btn-filled:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+
+/* Forms */
+.field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+/* fieldset wraps checkbox groups for a11y; strip the UA border/padding so it
+   lays out identically to a plain .field */
+fieldset.field { border: 0; padding: 0; margin-inline: 0; min-inline-size: 0; }
+/* direct children only, so nested .checkbox-row labels keep their own styling */
+.field > legend, .field > label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  font-weight: 500;
+}
+/* direct children only — nested checkbox inputs must keep their native sizing */
+.field > input, .field > select, .field > textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-rule);
+  background: var(--color-paper);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 0.15s;
+  border-radius: 2px;
+}
+.field > input:focus, .field > select:focus, .field > textarea:focus { border-color: var(--color-accent); }
+.field textarea { min-height: 120px; resize: vertical; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+.checkbox-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; }
+.checkbox-row label {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.checkbox-row input { accent-color: var(--color-accent); flex-shrink: 0; }
+/* stack options vertically when the labels are long */
+.checkbox-col { flex-direction: column; gap: 0.4rem; }
+@media (max-width: 600px) { .checkbox-row { flex-direction: column; gap: 0.5rem; } }
+.field legend { padding: 0; margin-bottom: 0.4rem; }
+
+/* Form validation messages. Not colour-alone: paired with aria-invalid on the
+   input and role="alert" on the message. */
+.field-error {
+  font-size: 0.78rem;
+  color: var(--color-error);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.field > input[aria-invalid="true"],
+.field > textarea[aria-invalid="true"] { border-color: var(--color-error); }
+.form-error {
+  font-size: 0.88rem;
+  color: var(--color-error);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Cards */
+.card {
+  background: var(--color-cream-soft);
+  border: 1px solid var(--color-cream-deep);
+  border-radius: 4px;
+  padding: 2rem;
+}
+.pricing-card {
+  background: var(--color-cream-soft);
+  border: 1px solid var(--color-cream-deep);
+  padding: 2.2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  border-radius: 2px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pricing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 2px rgba(40,28,16,0.04), 0 8px 24px rgba(40,28,16,0.06);
+}
+.pricing-card.popular { background: #fff; border: 1.5px solid var(--color-ink); }
+
+/* Image treatments */
+.img-circle { border-radius: 50%; object-fit: cover; }
+.img-edit { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.02) saturate(1.05); }
+
+/* Numerals */
+.numeral {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 5rem;
+  color: var(--color-accent);
+  line-height: 0.9;
+}
+
+/* Utilities */
+.text-amber { color: var(--color-accent); }
+.text-teal { color: var(--color-hover); }
+.text-muted { color: var(--color-text); }
+.divider { height: 1px; background: var(--color-rule); border: 0; margin: 1.25rem 0; }
+
+/* Nav */
+a.nav-link {
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d8cfc2;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+  position: relative;
+}
+a.nav-link:hover { color: var(--color-accent); }
+a.nav-link.active { color: #fff; }
+a.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 1px; background: var(--color-accent);
+}

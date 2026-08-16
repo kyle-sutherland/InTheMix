@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm outdated:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm approve-builds:*)",
+      "Bash(pnpm rebuild:*)",
+      "Bash(pnpm build:*)",
+      "Bash(node:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(pnpm install *)",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(pnpm lint *)",
+      "Bash(command -v pnpm)",
+      "Bash(./node_modules/.bin/next lint *)",
+      "Bash(./node_modules/.bin/eslint components/button.jsx components/forms/event-form.jsx components/forms/consulting-form.jsx app/blog/page.jsx)",
+      "Bash(timeout 180 ./node_modules/.bin/next build)",
+      "Bash(nohup ./node_modules/.bin/next dev -p 3411)",
+      "Bash(disown)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3411/event-bartending)"
+    ]
+  }
+}
