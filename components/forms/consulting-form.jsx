@@ -28,8 +28,13 @@ export default function ConsultingForm() {
       const recaptchaToken = executeRecaptcha ? await executeRecaptcha("consulting_form") : undefined;
       await axios.post("/api/contact", { ...data, formType: "consulting", recaptchaToken });
       setSubmitted(true);
-    } catch {
-      setError("Something went wrong. Please try again or email us directly.");
+    } catch (err) {
+      const status = err?.response?.status;
+      setError(
+        status === 403
+          ? "We couldn't verify your submission. Please refresh the page and try again."
+          : "Something went wrong. Please try again or email us directly.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -45,64 +50,96 @@ export default function ConsultingForm() {
     );
   }
 
-  const inputStyle = { marginBottom: "1.25rem" };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
       {/* Honeypot */}
-      <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} {...register("_gotcha")} />
+      <input
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ display: "none" }}
+        {...register("_gotcha")}
+      />
 
-      <div style={inputStyle}>
-        <label className="form-label">Business / Project Name *</label>
-        <input className="form-input" placeholder="Required Field" {...register("businessName", { required: true })} />
-        {errors.businessName && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="consult-business">Business / Project Name *</label>
+        <input
+          id="consult-business"
+          placeholder="Required Field"
+          aria-invalid={errors.businessName ? "true" : undefined}
+          {...register("businessName", { required: true })}
+        />
+        {errors.businessName && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Project Type</label>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem", marginTop: "0.4rem" }}>
+      <fieldset className="field">
+        <legend>Project Type</legend>
+        <div className="checkbox-row checkbox-col">
           {PROJECT_TYPES.map((type) => (
-            <label key={type} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.95rem", cursor: "pointer" }}>
+            <label key={type}>
               <input type="checkbox" value={type} {...register("projectTypes")} />
               {type}
             </label>
           ))}
         </div>
+      </fieldset>
+
+      <div className="field">
+        <label htmlFor="consult-location">Location *</label>
+        <input
+          id="consult-location"
+          placeholder="Required Field"
+          aria-invalid={errors.location ? "true" : undefined}
+          {...register("location", { required: true })}
+        />
+        {errors.location && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Location *</label>
-        <input className="form-input" placeholder="Required Field" {...register("location", { required: true })} />
-        {errors.location && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="consult-name">Name *</label>
+        <input
+          id="consult-name"
+          placeholder="Required Field"
+          aria-invalid={errors.name ? "true" : undefined}
+          {...register("name", { required: true })}
+        />
+        {errors.name && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Name *</label>
-        <input className="form-input" placeholder="Required Field" {...register("name", { required: true })} />
-        {errors.name && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="consult-email">e-mail *</label>
+        <input
+          id="consult-email"
+          type="email"
+          placeholder="Required Field"
+          aria-invalid={errors.email ? "true" : undefined}
+          {...register("email", { required: true })}
+        />
+        {errors.email && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">e-mail *</label>
-        <input className="form-input" type="email" placeholder="Required Field" {...register("email", { required: true })} />
-        {errors.email && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="consult-phone">Phone *</label>
+        <input
+          id="consult-phone"
+          type="tel"
+          placeholder="Required Field"
+          aria-invalid={errors.phone ? "true" : undefined}
+          {...register("phone", { required: true })}
+        />
+        {errors.phone && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Phone *</label>
-        <input className="form-input" type="tel" placeholder="Required Field" {...register("phone", { required: true })} />
-        {errors.phone && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="consult-message">Message</label>
+        <textarea id="consult-message" rows={5} {...register("message")} />
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Message</label>
-        <textarea className="form-input" rows={5} {...register("message")} />
-      </div>
-
-      {error && <p style={{ color: "red", fontSize: "0.85rem", marginBottom: "1rem" }}>{error}</p>}
+      {error && <p className="form-error" role="alert">{error}</p>}
 
       <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-        <OutlineButton type="submit" style={{ opacity: submitting ? 0.7 : 1 }}>
+        <OutlineButton type="submit" disabled={submitting} style={{ opacity: submitting ? 0.7 : 1 }}>
           {submitting ? "Sending..." : "Request a Quote"}
         </OutlineButton>
       </div>

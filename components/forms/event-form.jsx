@@ -23,8 +23,13 @@ export default function EventForm() {
       const recaptchaToken = executeRecaptcha ? await executeRecaptcha("event_form") : undefined;
       await axios.post("/api/contact", { ...data, formType: "event", recaptchaToken });
       setSubmitted(true);
-    } catch {
-      setError("Something went wrong. Please try again or email us directly.");
+    } catch (err) {
+      const status = err?.response?.status;
+      setError(
+        status === 403
+          ? "We couldn't verify your submission. Please refresh the page and try again."
+          : "Something went wrong. Please try again or email us directly.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -40,86 +45,126 @@ export default function EventForm() {
     );
   }
 
-  const inputStyle = { marginBottom: "1.25rem" };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
       {/* Honeypot */}
-      <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} {...register("_gotcha")} />
+      <input
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ display: "none" }}
+        {...register("_gotcha")}
+      />
 
-      <div style={inputStyle}>
-        <label className="form-label">Name *</label>
-        <input className="form-input" placeholder="Required Field" {...register("name", { required: true })} />
-        {errors.name && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="event-name">Name *</label>
+        <input
+          id="event-name"
+          placeholder="Required Field"
+          aria-invalid={errors.name ? "true" : undefined}
+          {...register("name", { required: true })}
+        />
+        {errors.name && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">e-mail *</label>
-        <input className="form-input" type="email" placeholder="Required Field" {...register("email", { required: true })} />
-        {errors.email && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="event-email">e-mail *</label>
+        <input
+          id="event-email"
+          type="email"
+          placeholder="Required Field"
+          aria-invalid={errors.email ? "true" : undefined}
+          {...register("email", { required: true })}
+        />
+        {errors.email && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Phone</label>
-        <input className="form-input" type="tel" {...register("phone")} />
+      <div className="field">
+        <label htmlFor="event-phone">Phone</label>
+        <input id="event-phone" type="tel" {...register("phone")} />
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Number of Guests *</label>
-        <input className="form-input" type="number" placeholder="Required Field" {...register("guests", { required: true })} />
-        {errors.guests && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="event-guests">Number of Guests *</label>
+        <input
+          id="event-guests"
+          type="number"
+          min="1"
+          placeholder="Required Field"
+          aria-invalid={errors.guests ? "true" : undefined}
+          {...register("guests", { required: true })}
+        />
+        {errors.guests && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Date of Event *</label>
-        <input className="form-input" type="date" placeholder="Required Field" {...register("date", { required: true })} />
-        {errors.date && <span style={{ color: "red", fontSize: "0.8rem" }}>Required</span>}
+      <div className="field">
+        <label htmlFor="event-date">Date of Event *</label>
+        <input
+          id="event-date"
+          type="date"
+          aria-invalid={errors.date ? "true" : undefined}
+          {...register("date", { required: true })}
+        />
+        {errors.date && <span className="field-error" role="alert">Required</span>}
       </div>
 
-      <div style={{ display: "flex", gap: "1rem", marginBottom: "1.25rem" }}>
-        <div style={{ flex: 1 }}>
-          <label className="form-label">Start Time *</label>
-          <input className="form-input" type="time" placeholder="Required Field" {...register("startTime", { required: true })} />
+      <div className="field-row">
+        <div className="field">
+          <label htmlFor="event-start">Start Time *</label>
+          <input
+            id="event-start"
+            type="time"
+            aria-invalid={errors.startTime ? "true" : undefined}
+            {...register("startTime", { required: true })}
+          />
+          {errors.startTime && <span className="field-error" role="alert">Required</span>}
         </div>
-        <div style={{ flex: 1 }}>
-          <label className="form-label">End Time *</label>
-          <input className="form-input" type="time" placeholder="Required Field" {...register("endTime", { required: true })} />
+        <div className="field">
+          <label htmlFor="event-end">End Time *</label>
+          <input
+            id="event-end"
+            type="time"
+            aria-invalid={errors.endTime ? "true" : undefined}
+            {...register("endTime", { required: true })}
+          />
+          {errors.endTime && <span className="field-error" role="alert">Required</span>}
         </div>
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Select Your Package</label>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 1.5rem", marginTop: "0.4rem" }}>
+      <fieldset className="field">
+        <legend>Select Your Package</legend>
+        <div className="checkbox-row">
           {PACKAGES.map((pkg) => (
-            <label key={pkg} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", cursor: "pointer" }}>
+            <label key={pkg}>
               <input type="checkbox" value={pkg} {...register("packages")} />
               {pkg}
             </label>
           ))}
         </div>
-      </div>
+      </fieldset>
 
-      <div style={inputStyle}>
-        <label className="form-label">Custom Bar Selections</label>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 1.5rem", marginTop: "0.4rem" }}>
+      <fieldset className="field">
+        <legend>Custom Bar Selections</legend>
+        <div className="checkbox-row">
           {CUSTOM_OPTIONS.map((opt) => (
-            <label key={opt} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", cursor: "pointer" }}>
+            <label key={opt}>
               <input type="checkbox" value={opt} {...register("customBarSelections")} />
               {opt}
             </label>
           ))}
         </div>
+      </fieldset>
+
+      <div className="field">
+        <label htmlFor="event-message">Message</label>
+        <textarea id="event-message" placeholder="Type something..." rows={5} {...register("message")} />
       </div>
 
-      <div style={inputStyle}>
-        <label className="form-label">Message</label>
-        <textarea className="form-input" placeholder="Type something..." rows={5} {...register("message")} />
-      </div>
-
-      {error && <p style={{ color: "red", fontSize: "0.85rem", marginBottom: "1rem" }}>{error}</p>}
+      {error && <p className="form-error" role="alert">{error}</p>}
 
       <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-        <OutlineButton type="submit" style={{ opacity: submitting ? 0.7 : 1 }}>
+        <OutlineButton type="submit" disabled={submitting} style={{ opacity: submitting ? 0.7 : 1 }}>
           {submitting ? "Sending..." : "Request a Quote"}
         </OutlineButton>
       </div>

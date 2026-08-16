@@ -6,13 +6,14 @@ import Link from "next/link";
  */
 export function Button({ href, children, variant = "outline", style = {}, ...rest }) {
   const cls = "btn" + (variant === "light" ? " btn-light" : variant === "filled" ? " btn-filled" : "");
-  if (href && href.startsWith("/")) {
+  if (!href) {
+    return <button className={cls} style={style} {...rest}>{children}</button>;
+  }
+  if (href.startsWith("/")) {
     return <Link href={href} className={cls} style={style} {...rest}>{children}</Link>;
   }
-  return <a href={href || "#"} className={cls} style={style} {...rest}>{children}</a>;
+  return <a href={href} className={cls} style={style} {...rest}>{children}</a>;
 }
 
 // Back-compat exports
-export const OutlineButton = ({ href, children, variant }) => (
-  <Button href={href} variant={variant}>{children}</Button>
-);
+export const OutlineButton = (props) => <Button {...props} />;

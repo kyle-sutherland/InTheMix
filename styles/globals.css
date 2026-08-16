@@ -21,6 +21,7 @@
   --color-hover-soft: #1A8AA1;
   --color-dark: #1B1814;
   --color-dark-footer: #15110D;
+  --color-error: #A32E22;         /* form validation; warm red to suit the palette */
 
   --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-serif: var(--font-fraunces), "Fraunces", "Cormorant Garamond", Georgia, serif;
@@ -120,21 +121,28 @@ img { display: block; max-width: 100%; }
   line-height: 1;
 }
 .btn:hover { background: var(--color-accent); color: var(--color-cream-soft); }
+.btn:disabled { cursor: not-allowed; opacity: 0.7; }
+.btn:disabled:hover { background: transparent; color: var(--color-accent); }
 .btn-light { border-color: rgba(255,255,255,0.85); color: #fff; }
 .btn-light:hover { background: #fff; color: var(--color-ink); border-color: #fff; }
 .btn-filled { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-cream-soft); }
 .btn-filled:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
 
 /* Forms */
-.field { display: flex; flex-direction: column; gap: 0.4rem; }
-.field label {
+.field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+/* fieldset wraps checkbox groups for a11y; strip the UA border/padding so it
+   lays out identically to a plain .field */
+fieldset.field { border: 0; padding: 0; margin-inline: 0; min-inline-size: 0; }
+/* direct children only, so nested .checkbox-row labels keep their own styling */
+.field > legend, .field > label {
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-text);
   font-weight: 500;
 }
-.field input, .field select, .field textarea {
+/* direct children only — nested checkbox inputs must keep their native sizing */
+.field > input, .field > select, .field > textarea {
   width: 100%;
   padding: 0.85rem 1rem;
   border: 1px solid var(--color-rule);
@@ -146,7 +154,7 @@ img { display: block; max-width: 100%; }
   transition: border-color 0.15s;
   border-radius: 2px;
 }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--color-accent); }
+.field > input:focus, .field > select:focus, .field > textarea:focus { border-color: var(--color-accent); }
 .field textarea { min-height: 120px; resize: vertical; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
@@ -162,7 +170,28 @@ img { display: block; max-width: 100%; }
   text-transform: none;
   letter-spacing: 0;
 }
-.checkbox-row input { accent-color: var(--color-accent); }
+.checkbox-row input { accent-color: var(--color-accent); flex-shrink: 0; }
+/* stack options vertically when the labels are long */
+.checkbox-col { flex-direction: column; gap: 0.4rem; }
+@media (max-width: 600px) { .checkbox-row { flex-direction: column; gap: 0.5rem; } }
+.field legend { padding: 0; margin-bottom: 0.4rem; }
+
+/* Form validation messages. Not colour-alone: paired with aria-invalid on the
+   input and role="alert" on the message. */
+.field-error {
+  font-size: 0.78rem;
+  color: var(--color-error);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.field > input[aria-invalid="true"],
+.field > textarea[aria-invalid="true"] { border-color: var(--color-error); }
+.form-error {
+  font-size: 0.88rem;
+  color: var(--color-error);
+  margin-bottom: 1rem;
+  text-align: center;
+}
 
 /* Cards */
 .card {
