@@ -64,7 +64,7 @@ export default function ConsultingPage() {
             </div>
           </div>
           <div style={{ position: "relative", background: "#0d0a07", minHeight: "60vh" }}>
-            <Image src="/drink1.jpg" alt="Cocktail from a bar program build" fill priority sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+            <Image src="/drink1.jpg" alt="A bartender shaking a cocktail in a gold shaker" fill priority sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </div>
         </div>
       </section>

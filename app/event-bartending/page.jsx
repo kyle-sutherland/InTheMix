@@ -50,7 +50,7 @@ export default function EventBartendingPage() {
       <section style={{ padding: 0, background: "var(--color-ink)", color: "#f4eee5", overflow: "hidden", position: "relative" }}>
         <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "78vh" }}>
           <div style={{ position: "relative", background: "#0d0a07", minHeight: "60vh" }}>
-            <Image src="/drink3.jpg" alt="Cocktail served at an event bar" fill priority sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+            <Image src="/drink3.jpg" alt="A guest holding a garnished cocktail at an outdoor event" fill priority sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </div>
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", padding: "4rem" }}>
             <p style={{ fontSize: "0.72rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#a89a86", display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}>

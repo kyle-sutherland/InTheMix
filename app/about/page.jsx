@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import SectionHeading from "../../components/section-heading";
 import { Button } from "../../components/button";
@@ -41,7 +42,7 @@ export default function AboutPage() {
             </div>
             <div style={{ position: "relative" }}>
               <div style={{ aspectRatio: "4/5", overflow: "hidden", position: "relative" }}>
-                <Image src="/drink1.jpg" alt="A finished cocktail on the bar" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                <Image src="/drink1.jpg" alt="Robyn, founder of In The Mix, shaking a cocktail" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
               </div>
               <div style={{ position: "absolute", bottom: "-1rem", left: "-1rem", background: "var(--color-cream)", border: "1px solid var(--color-rule)", padding: "0.6rem 1rem" }}>
                 <p className="h-script" style={{ color: "var(--color-hover)", fontSize: "1.4rem", lineHeight: 1 }}>Robyn</p>
@@ -59,19 +60,22 @@ export default function AboutPage() {
         <div style={container}>
           <SectionHeading>Origin story</SectionHeading>
           <div className="timeline" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", maxWidth: 960, margin: "4rem auto 0" }}>
+            {/* Fragment (not <>) so it can carry the key: the fragment is the
+                array item, and its children must stay direct grid children so
+                the divider's `gridColumn: 1 / -1` spans the row. */}
             {timeline.map((row, i) => (
-              <>
-                {i > 0 && <div key={`r-${i}`} style={{ gridColumn: "1 / -1", height: 1, background: "var(--color-rule)", margin: "1.5rem 0" }} />}
-                <div key={`era-${i}`}>
+              <Fragment key={row.era}>
+                {i > 0 && <div style={{ gridColumn: "1 / -1", height: 1, background: "var(--color-rule)", margin: "1.5rem 0" }} />}
+                <div>
                   <p className="h-serif" style={{ fontStyle: "italic", fontSize: "2.2rem", color: "var(--color-accent)", margin: 0 }}>{row.era}</p>
                   {row.sub && (
                     <p style={{ fontSize: "0.78rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-text)" }}>{row.sub}</p>
                   )}
                 </div>
-                <div key={`body-${i}`}>
+                <div>
                   <p style={{ lineHeight: 1.8 }}>{row.body}</p>
                 </div>
-              </>
+              </Fragment>
             ))}
           </div>
         </div>
@@ -91,7 +95,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div style={{ aspectRatio: "4/5", overflow: "hidden", position: "relative" }}>
-              <Image src="/drink2.jpg" alt="Cocktails arranged for service" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+              <Image src="/drink2.jpg" alt="A bartender setting down a bright red cocktail on the bar" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
             </div>
           </div>
         </div>
